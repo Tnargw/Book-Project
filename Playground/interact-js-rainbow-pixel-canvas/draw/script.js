@@ -1,4 +1,4 @@
-// CANVAS / DRAWING FUNCTIONS
+// ==== CANVAS / DRAWING FUNCTIONS ====
 
 const pixelSize = 20; // example grid size
 const canvases = document.querySelectorAll(".rainbow-pixel-canvas");
@@ -63,7 +63,8 @@ canvases.forEach(canvas => {
   });
 });
 
-
+window.addEventListener("DOMContentLoaded", resizeCanvases);
+window.addEventListener("resize", resizeCanvases);
 
 
 // ===== SAVE/LOAD - LOCAL STORAGE =====
@@ -184,5 +185,5 @@ loadBtn.addEventListener("click", () => {
 });
 
 
-window.addEventListener("DOMContentLoaded", resizeCanvases);
-window.addEventListener("resize", resizeCanvases);
+
+
