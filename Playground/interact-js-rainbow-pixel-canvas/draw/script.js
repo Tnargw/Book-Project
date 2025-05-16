@@ -90,10 +90,16 @@ canvases.forEach(canvas => {
     startDrawing(e);
     longPressTimeout = setTimeout(() => {
       const { x, y } = getEventCoordinates(e);
-      const dragAngle = 0;
-      const speed = 0;
+      const currentX = snapToGrid(x, pixelSize);
+      const currentY = snapToGrid(y, pixelSize);
+      const dx = currentX - lastX;
+      const dy = currentY - lastY;
+      const dt = performance.now() - lastTime;
+
+      const dragAngle = 180 * Math.atan2(dx, dy) / Math.PI;
+      const speed = Math.sqrt(dx * dx + dy * dy) / dt;
       touchColorLocked = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
-    }, 500);
+    }, 2500);
   });
 
   window.addEventListener('mousemove', draw);
@@ -121,7 +127,6 @@ window.addEventListener('keyup', (e) => {
 
 window.addEventListener('DOMContentLoaded', resizeCanvases);
 window.addEventListener('resize', resizeCanvases);
-
 
 
 
