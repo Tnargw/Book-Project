@@ -1,8 +1,9 @@
 # Book-Project
 
+website link: https://storyium.netlify.app
+Drawing link: https://storyium.netlify.app/playground/interact-js-rainbow-pixel-canvas/draw/
 
 CodePen Reference:
-
 overall Design:
     - Ripple button: https://codepen.io/hexagoncircle/pen/KwPpdBZ
     - Animated dithering: https://codepen.io/VoXelo/pen/vEEPErJ

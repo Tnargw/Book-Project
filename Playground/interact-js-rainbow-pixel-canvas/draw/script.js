@@ -56,13 +56,28 @@ canvases.forEach(canvas => {
     const dx = currentX - lastX;
     const dy = currentY - lastY;
     const dt = performance.now() - lastTime;
-
+  
     if (dx === 0 && dy === 0) return;
+  
+    // Calculate the rainbow color as usual
     const dragAngle = 180 * Math.atan2(dx, dy) / Math.PI;
     const speed = Math.sqrt(dx * dx + dy * dy) / dt;
-    context.fillStyle = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
+    const rainbowColor = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
+  
+    if (keyIsHeld) {
+      // If Shift just pressed, lock the color
+      if (!lockedColor) {
+        lockedColor = rainbowColor;
+      }
+      context.fillStyle = lockedColor;
+    } else {
+      // Reset locked color when Shift released
+      lockedColor = null;
+      context.fillStyle = rainbowColor;
+    }
+  
     context.fillRect(currentX - pixelSize / 2, currentY - pixelSize / 2, pixelSize, pixelSize);
-
+  
     lastX = currentX;
     lastY = currentY;
     lastTime = performance.now();
@@ -71,6 +86,25 @@ canvases.forEach(canvas => {
   function stopDrawing() {
     isDragging = false;
   }
+
+// ---- color hold
+let keyIsHeld = false;
+let lockedColor = null; // store the color when Shift is pressed
+
+// Listen for keydown and keyup on window
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Shift') {
+    keyIsHeld = true;
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  if (e.key === 'Shift') {
+    keyIsHeld = false;
+  }
+});
+
+
 
   function clearCanvas() {
     const context = canvas.getContext('2d');
