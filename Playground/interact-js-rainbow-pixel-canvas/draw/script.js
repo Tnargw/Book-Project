@@ -64,7 +64,7 @@ canvases.forEach(canvas => {
 
 
 
-// SAVE/LOAD - LOCAL STORAGE
+// ===== SAVE/LOAD - LOCAL STORAGE =====
 
 const saveBtn = document.getElementById("saveBtn");
 const loadBtn = document.getElementById("loadBtn");
@@ -74,7 +74,7 @@ saveBtn.addEventListener("click", () => {
     // Save the canvas as a data URL string
     const dataURL = canvas.toDataURL();
     localStorage.setItem("savedDrawing", dataURL);
-    alert("Drawing saved!");
+    // alert("Drawing saved!");
   });
 });
 
@@ -93,6 +93,92 @@ loadBtn.addEventListener("click", () => {
     };
     img.src = savedDrawing;
   });
+});
+
+
+// ==== SQUISH CANVAS DISPLAY ====
+
+const previewCanvas = document.getElementById("previewCanvas");
+const previewCtx = previewCanvas.getContext("2d");
+
+function animateSquish() {
+  const savedDrawing = localStorage.getItem("savedDrawing");
+  if (!savedDrawing) return;
+
+  const img = new Image();
+  img.src = savedDrawing;
+  
+  let scaleY = 1;
+  let direction = -1;  // -1 means squish, 1 means stretch
+  const amplitude = 0.078; // Squish/stretch intensity 
+  const speed = 0.017; // Animation speed
+
+  img.onload = () => {
+    function step() {
+      previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+      previewCtx.save();
+
+      // Move to the bottom center before scaling
+      previewCtx.translate(previewCanvas.width / 2, previewCanvas.height);
+
+      // Scale vertically to squish/stretch, keeping the base fixed
+      previewCtx.scale(1, scaleY);
+
+      // Draw the image, anchoring from the bottom center
+      previewCtx.drawImage(
+        img, 
+        -previewCanvas.width / 2,       // Center horizontally
+        -previewCanvas.height,          // Align the bottom of the image with the canvas bottom
+        previewCanvas.width, 
+        previewCanvas.height
+      );
+
+      previewCtx.restore();
+
+      // Update scaleY for the squish effect
+      scaleY += direction * speed;
+      if (scaleY <= 1 - amplitude || scaleY >= 1 + amplitude) {
+        direction *= -1;  // Reverse direction at the squish/stretch limits
+      }
+
+      requestAnimationFrame(step);
+    }
+    step();
+  };
+}
+
+
+// Call this whenever you want to start or restart the preview animation
+animateSquish();
+
+
+//  ===== UPDATE SQUISH CANVAS ====
+saveBtn.addEventListener("click", () => {
+  canvases.forEach(canvas => {
+    const dataURL = canvas.toDataURL();
+    localStorage.setItem("savedDrawing", dataURL);
+    // alert("Drawing saved!");
+    animateSquish();  // Refresh preview with animation
+  });
+});
+
+loadBtn.addEventListener("click", () => {
+  const savedDrawing = localStorage.getItem("savedDrawing");
+  if (!savedDrawing) {
+    alert("No saved drawing found.");
+    return;
+  }
+  canvases.forEach(canvas => {
+    const context = canvas.getContext("2d");
+    const img = new Image();
+    img.onload = () => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(img, 0, 0);
+    };
+    img.src = savedDrawing;
+  });
+  animateSquish();  // Refresh preview with animation
 });
 
 
