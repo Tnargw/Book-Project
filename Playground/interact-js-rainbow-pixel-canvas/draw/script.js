@@ -1,3 +1,5 @@
+// CANVAS / DRAWING FUNCTIONS
+
 const pixelSize = 20; // example grid size
 const canvases = document.querySelectorAll(".rainbow-pixel-canvas");
 
