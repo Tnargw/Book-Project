@@ -91,6 +91,35 @@ canvases.forEach(canvas => {
 let keyIsHeld = false;
 let lockedColor = null; // store the color when Shift is pressed
 
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const { x, y } = getEventCoordinates(e);
+
+  // Start long press timer (e.g., 500ms)
+  longPressTimeout = setTimeout(() => {
+    // Lock the current brush color at this touch position
+    // We'll calculate the rainbow color once and lock it
+    const currentX = snapToGrid(x, pixelSize);
+    const currentY = snapToGrid(y, pixelSize);
+
+    // For locking color, simulate a small movement vector to get angle and speed:
+    // Since no movement yet, just use some default or zero values
+    // Or better: use lastX/lastY from previous drag or just 0
+    // Here we just calculate dragAngle and speed as 0 for simplicity:
+    const dragAngle = 0; // or use last known angle if you want
+    const speed = 0;
+
+    touchColorLocked = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
+  }, 500);
+
+  startDrawing(e);
+});
+
+
+let touchColorLocked = null;
+let longPressTimeout = null;
+
+
 // Listen for keydown and keyup on window
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Shift') {
