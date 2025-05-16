@@ -115,6 +115,49 @@ canvas.addEventListener('touchstart', (e) => {
   startDrawing(e);
 });
 
+function draw(e) {
+  if (!isDragging) return;
+  e.preventDefault();
+  const { x, y } = getEventCoordinates(e);
+  const context = canvas.getContext('2d');
+  const currentX = snapToGrid(x, pixelSize);
+  const currentY = snapToGrid(y, pixelSize);
+  const dx = currentX - lastX;
+  const dy = currentY - lastY;
+  const dt = performance.now() - lastTime;
+
+  if (dx === 0 && dy === 0) return;
+
+  const dragAngle = 180 * Math.atan2(dx, dy) / Math.PI;
+  const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+  const rainbowColor = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
+
+  if (keyIsHeld) {
+    // Keyboard shift key lock
+    if (!lockedColor) {
+      lockedColor = rainbowColor;
+    }
+    context.fillStyle = lockedColor;
+  } else if (touchColorLocked) {
+    // Touch long press lock
+    context.fillStyle = touchColorLocked;
+  } else {
+    context.fillStyle = rainbowColor;
+  }
+
+  context.fillRect(currentX - pixelSize / 2, currentY - pixelSize / 2, pixelSize, pixelSize);
+
+  lastX = currentX;
+  lastY = currentY;
+  lastTime = performance.now();
+}
+
+canvas.addEventListener('touchend', (e) => {
+  clearTimeout(longPressTimeout);
+  touchColorLocked = null;
+  stopDrawing(e);
+});
+
 
 let touchColorLocked = null;
 let longPressTimeout = null;
