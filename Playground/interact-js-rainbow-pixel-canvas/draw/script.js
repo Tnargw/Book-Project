@@ -1,7 +1,7 @@
 // ==== CANVAS / DRAWING FUNCTIONS ====
 
 const pixelSize = 20; // example grid size
-const canvases = document.querySelectorAll(".rainbow-pixel-canvas");
+const canvases = document.querySelectorAll('.rainbow-pixel-canvas');
 
 function resizeCanvases() {
   canvases.forEach(canvas => {
@@ -20,75 +20,92 @@ canvases.forEach(canvas => {
   let lastY = 0;
   let lastTime = 0;
 
-  canvas.addEventListener("mousedown", (e) => {
+  function getEventCoordinates(e) {
+    if (e.touches && e.touches[0]) {
+      return { x: e.touches[0].pageX, y: e.touches[0].pageY };
+    }
+    return { x: e.pageX, y: e.pageY };
+  }
+
+  function startDrawing(e) {
+    e.preventDefault();
     isDragging = true;
-    lastX = e.pageX;
-    lastY = e.pageY;
+    const { x, y } = getEventCoordinates(e);
+    lastX = x;
+    lastY = y;
     lastTime = performance.now();
-  });
+  }
 
-  window.addEventListener("mousemove", (e) => {
+  function draw(e) {
     if (!isDragging) return;
-
-    const context = canvas.getContext("2d");
-
-    const currentX = snapToGrid(e.pageX, pixelSize);
-    const currentY = snapToGrid(e.pageY, pixelSize);
-
+    e.preventDefault();
+    const { x, y } = getEventCoordinates(e);
+    const context = canvas.getContext('2d');
+    const currentX = snapToGrid(x, pixelSize);
+    const currentY = snapToGrid(y, pixelSize);
     const dx = currentX - lastX;
     const dy = currentY - lastY;
     const dt = performance.now() - lastTime;
 
     if (dx === 0 && dy === 0) return;
-
     const dragAngle = 180 * Math.atan2(dx, dy) / Math.PI;
     const speed = Math.sqrt(dx * dx + dy * dy) / dt;
-
     context.fillStyle = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
     context.fillRect(currentX - pixelSize / 2, currentY - pixelSize / 2, pixelSize, pixelSize);
 
     lastX = currentX;
     lastY = currentY;
     lastTime = performance.now();
-  });
+  }
 
-  window.addEventListener("mouseup", () => {
+  function stopDrawing() {
     isDragging = false;
-  });
+  }
 
-  // Double click to clear canvas
-  canvas.addEventListener("dblclick", () => {
-    const context = canvas.getContext("2d");
+  function clearCanvas() {
+    const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('touchstart', startDrawing, { passive: false });
+  window.addEventListener('mousemove', draw);
+  window.addEventListener('touchmove', draw, { passive: false });
+  window.addEventListener('mouseup', stopDrawing);
+  window.addEventListener('touchend', stopDrawing);
+
+  // Clear canvas on double-click or long press
+  canvas.addEventListener('dblclick', clearCanvas);
+  canvas.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      setTimeout(() => {
+        if (isDragging) return;
+        clearCanvas();
+      }, 600); // Long press duration
+    }
   });
 });
 
-window.addEventListener("DOMContentLoaded", resizeCanvases);
-window.addEventListener("resize", resizeCanvases);
-
+window.addEventListener('DOMContentLoaded', resizeCanvases);
+window.addEventListener('resize', resizeCanvases);
 
 // ===== SAVE/LOAD - LOCAL STORAGE =====
 
-const saveBtn = document.getElementById("saveBtn");
-const loadBtn = document.getElementById("loadBtn");
+const saveBtn = document.getElementById('saveBtn');
+const loadBtn = document.getElementById('loadBtn');
 
-saveBtn.addEventListener("click", () => {
+saveBtn.addEventListener('click', () => {
   canvases.forEach(canvas => {
-    // Save the canvas as a data URL string
     const dataURL = canvas.toDataURL();
-    localStorage.setItem("savedDrawing", dataURL);
-    // alert("Drawing saved!");
+    localStorage.setItem('savedDrawing', dataURL);
   });
 });
 
-loadBtn.addEventListener("click", () => {
-  const savedDrawing = localStorage.getItem("savedDrawing");
-  if (!savedDrawing) {
-    alert("No saved drawing found.");
-    return;
-  }
+loadBtn.addEventListener('click', () => {
+  const savedDrawing = localStorage.getItem('savedDrawing');
+  if (!savedDrawing) return alert('No saved drawing found.');
   canvases.forEach(canvas => {
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     const img = new Image();
     img.onload = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -98,92 +115,36 @@ loadBtn.addEventListener("click", () => {
   });
 });
 
-
 // ==== SQUISH CANVAS DISPLAY ====
 
-const previewCanvas = document.getElementById("previewCanvas");
-const previewCtx = previewCanvas.getContext("2d");
+const previewCanvas = document.getElementById('previewCanvas');
+const previewCtx = previewCanvas.getContext('2d');
 
 function animateSquish() {
-  const savedDrawing = localStorage.getItem("savedDrawing");
+  const savedDrawing = localStorage.getItem('savedDrawing');
   if (!savedDrawing) return;
-
   const img = new Image();
   img.src = savedDrawing;
-  
   let scaleY = 1;
-  let direction = -1;  // -1 means squish, 1 means stretch
-  const amplitude = 0.078; // Squish/stretch intensity 
-  const speed = 0.017; // Animation speed
+  let direction = -1;
+  const amplitude = 0.078;
+  const speed = 0.017;
 
   img.onload = () => {
     function step() {
       previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
-
       previewCtx.save();
-
-      // Move to the bottom center before scaling
       previewCtx.translate(previewCanvas.width / 2, previewCanvas.height);
-
-      // Scale vertically to squish/stretch, keeping the base fixed
       previewCtx.scale(1, scaleY);
-
-      // Draw the image, anchoring from the bottom center
-      previewCtx.drawImage(
-        img, 
-        -previewCanvas.width / 2,       // Center horizontally
-        -previewCanvas.height,          // Align the bottom of the image with the canvas bottom
-        previewCanvas.width, 
-        previewCanvas.height
-      );
-
+      previewCtx.drawImage(img, -previewCanvas.width / 2, -previewCanvas.height, previewCanvas.width, previewCanvas.height);
       previewCtx.restore();
-
-      // Update scaleY for the squish effect
       scaleY += direction * speed;
-      if (scaleY <= 1 - amplitude || scaleY >= 1 + amplitude) {
-        direction *= -1;  // Reverse direction at the squish/stretch limits
-      }
-
+      if (scaleY <= 1 - amplitude || scaleY >= 1 + amplitude) direction *= -1;
       requestAnimationFrame(step);
     }
     step();
   };
 }
 
-
-// Call this whenever you want to start or restart the preview animation
-animateSquish();
-
-
-//  ===== UPDATE SQUISH CANVAS ====
-saveBtn.addEventListener("click", () => {
-  canvases.forEach(canvas => {
-    const dataURL = canvas.toDataURL();
-    localStorage.setItem("savedDrawing", dataURL);
-    // alert("Drawing saved!");
-    animateSquish();  // Refresh preview with animation
-  });
-});
-
-loadBtn.addEventListener("click", () => {
-  const savedDrawing = localStorage.getItem("savedDrawing");
-  if (!savedDrawing) {
-    alert("No saved drawing found.");
-    return;
-  }
-  canvases.forEach(canvas => {
-    const context = canvas.getContext("2d");
-    const img = new Image();
-    img.onload = () => {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, 0, 0);
-    };
-    img.src = savedDrawing;
-  });
-  animateSquish();  // Refresh preview with animation
-});
-
-
-
-
+saveBtn.addEventListener('click', animateSquish);
+loadBtn.addEventListener('click', animateSquish);
