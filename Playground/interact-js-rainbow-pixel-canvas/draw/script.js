@@ -2,12 +2,22 @@
 
 const pixelSize = 20; // example grid size
 const canvases = document.querySelectorAll('.rainbow-pixel-canvas');
+const clearBtn = document.getElementById('clearBtn');
+
 
 function resizeCanvases() {
   canvases.forEach(canvas => {
-    canvas.width = document.body.clientWidth;
-    canvas.height = window.innerHeight * 0.7;
+    // Set width to the smaller of the window width or 70% of window height to keep square
+    const size = Math.min(document.body.clientWidth, window.innerHeight * 0.7);
+    canvas.width = size;
+    canvas.height = size;
   });
+
+  // Also resize previewCanvas to be square, matching the same size or fixed size
+  const previewSize = 100; // or you can use same 'size' for bigger preview
+
+  previewCanvas.width = previewSize;
+  previewCanvas.height = previewSize;
 }
 
 function snapToGrid(value, gridSize) {
@@ -74,20 +84,14 @@ canvases.forEach(canvas => {
   window.addEventListener('mouseup', stopDrawing);
   window.addEventListener('touchend', stopDrawing);
 
-  // Clear canvas on double-click or long press
-  canvas.addEventListener('dblclick', clearCanvas);
-  canvas.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-      setTimeout(() => {
-        if (isDragging) return;
-        clearCanvas();
-      }, 600); // Long press duration
-    }
-  });
+  // Attach clear button event listener
+  clearBtn.addEventListener('click', clearCanvas);
 });
 
 window.addEventListener('DOMContentLoaded', resizeCanvases);
 window.addEventListener('resize', resizeCanvases);
+
+
 
 // ===== SAVE/LOAD - LOCAL STORAGE =====
 
@@ -125,24 +129,54 @@ function animateSquish() {
   if (!savedDrawing) return;
   const img = new Image();
   img.src = savedDrawing;
-  let scaleY = 1;
-  let direction = -1;
-  const amplitude = 0.078;
-  const speed = 0.017;
 
   img.onload = () => {
-    function step() {
+    const amplitude = 0.12;     // More squish amplitude
+    const duration = 500;      // Full cycle duration in ms
+    const lingerRatio = 0.2;    // % of time lingering at normal scale
+    const squishDuration = duration * (1 - lingerRatio) / 2; // half squish time
+
+    let startTime = null;
+
+    // Easing function for smooth ease in/out
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = (timestamp - startTime) % duration;
+
+      let scaleY;
+
+      if (elapsed < duration * lingerRatio) {
+        // Linger at normal scale
+        scaleY = 1;
+      } else {
+        // Squish phase
+        let squishTime = elapsed - duration * lingerRatio;
+        if (squishTime < squishDuration) {
+          // Squish down (scale from 1 to 1 - amplitude)
+          let t = squishTime / squishDuration;
+          scaleY = 1 - amplitude * easeInOutQuad(t);
+        } else {
+          // Squish back up (scale from 1 - amplitude to 1)
+          let t = (squishTime - squishDuration) / squishDuration;
+          scaleY = (1 - amplitude) + amplitude * easeInOutQuad(t);
+        }
+      }
+
       previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
       previewCtx.save();
       previewCtx.translate(previewCanvas.width / 2, previewCanvas.height);
       previewCtx.scale(1, scaleY);
       previewCtx.drawImage(img, -previewCanvas.width / 2, -previewCanvas.height, previewCanvas.width, previewCanvas.height);
       previewCtx.restore();
-      scaleY += direction * speed;
-      if (scaleY <= 1 - amplitude || scaleY >= 1 + amplitude) direction *= -1;
+
       requestAnimationFrame(step);
     }
-    step();
+
+    requestAnimationFrame(step);
   };
 }
 
