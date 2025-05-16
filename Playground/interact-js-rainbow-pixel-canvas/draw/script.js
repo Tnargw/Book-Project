@@ -1,6 +1,7 @@
 // ==== CANVAS / DRAWING FUNCTIONS ====
 
-const pixelSize = 20; // example grid size
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+const pixelSize = isMobile ? 40 : 20; // Larger size on mobile // example grid size
 const canvases = document.querySelectorAll('.rainbow-pixel-canvas');
 const clearBtn = document.getElementById('clearBtn');
 
