@@ -11,7 +11,10 @@ export default defineConfig({
     outDir: "../dist",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "src/index.html")
+        main: resolve(__dirname, "src/index.html"),
+        apiTest: resolve(__dirname, "src/Playground/recommendations/apiTest.html"),
+        apiTestGenreSpecific: resolve(__dirname, "src/Playground/recommendations/apiTestGenreSpecific.html"),
+        rainbowCanvas: resolve(__dirname, "src/Playground/interact-js-rainbow-pixel-canvas/draw/index.html")
       }
     }
   }
