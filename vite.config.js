@@ -7,6 +7,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   root: "src/",
 
+  base: "/", // Ensures all built paths are relative to the root
+
   build: {
     outDir: "../dist",
     rollupOptions: {
