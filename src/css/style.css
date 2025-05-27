@@ -1,0 +1,44 @@
+
+
+
+
+
+
+
+
+
+
+
+/* Temporary CSS for the API Test */
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+  background: #f9f9f9;
+}
+
+input,
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+#results {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-height: 600px;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+label {
+  display: block;
+  margin: 0.25rem 0;
+}
+
+img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
