@@ -1,0 +1,28 @@
+/* .flex {
+    display: flex;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .align-center {
+    align-items: center;
+  }
+  
+  .text-bold {
+    font-weight: bold;
+  } */
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-outline {
+    background: none;
+    border: 2px solid currentColor;
+    color: inherit;
+  }
