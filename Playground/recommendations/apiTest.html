@@ -123,37 +123,46 @@
       <h3>Cleaned Subject Tags</h3>
     `;
 
-        const noisyTags = [
-          'fiction', 'literature', 'english literature', 'fiction in english',
-          'open library', 'staff picks', 'fictitious character', 'imaginary place',
-          'untranslated', 'specimens', 'pictorial works', 'media tie-in',
-          'toy and movable books', 'schultheater'
-        ];
+       const noisyTags = [
+  'fiction', 'literature', 'english literature', 'fiction in english',
+  'open library', 'staff picks', 'fictitious character', 'imaginary place',
+  'untranslated', 'specimens', 'pictorial works', 'media tie-in',
+  'toy and movable books', 'schultheater'
+];
 
-        const normalizeTag = t => t.toLowerCase().replace(/[^a-z\s]/g, '').trim();
-        const subjectSet = new Set();
-        const normSet = new Set();
-        const cleanedTags = [];
+const normalizeTag = t => t.toLowerCase().replace(/[^a-z\s]/g, '').trim();
+const normSet = new Set();
+const cleanedTags = [];
 
-        for (const tag of workData.subjects || []) {
-          if (typeof tag !== 'string') continue;
-          const lower = tag.toLowerCase();
-          const norm = normalizeTag(lower);
-          if (
-            lower.length < 2 ||
-            !/^[\x00-\x7F]+$/.test(lower) ||
-            noisyTags.some(noise => lower.includes(noise)) ||
-            norm.includes("hobbit") ||
-            norm.includes("tolkien") ||
-            norm.includes("motion picture") ||
-            norm.includes("media tiein") ||
-            normSet.has(norm)
-          ) {
-            continue;
-          }
-          normSet.add(norm);
-          cleanedTags.push(tag);
-        }
+for (const tag of workData.subjects || []) {
+  if (typeof tag !== 'string') continue;
+  const lower = tag.toLowerCase();
+  const norm = normalizeTag(lower);
+
+  // Block only generic uses of 'fiction', not 'romance fiction' or similar
+  const isNoisy = noisyTags.some(noise =>
+    noise !== 'fiction'
+      ? lower.includes(noise)
+      : (lower === 'fiction' || lower === 'general fiction' || lower === 'fiction in english')
+  );
+
+  if (
+    lower.length < 2 ||
+    !/^[\x00-\x7F]+$/.test(lower) ||
+    isNoisy ||
+    norm.includes("hobbit") ||
+    norm.includes("tolkien") ||
+    norm.includes("motion picture") ||
+    norm.includes("media tiein") ||
+    normSet.has(norm)
+  ) {
+    continue;
+  }
+
+  normSet.add(norm);
+  cleanedTags.push(tag);
+}
+
 
         cleanedTags.sort((a, b) => b.length - a.length);
 
@@ -230,7 +239,7 @@
                       thumbnail: info.imageLinks?.thumbnail || '',
                       sourceTag: tag
                     });
-                  }
+                  } 
                 }
               }
             }
@@ -238,7 +247,7 @@
             if (!recResults.size) {
               recContainer.innerHTML = '<p>No recommendations found.</p>';
             } else {
-              const list = document.createElement('ul');
+              const list = document.createElement('ul'); 
               for (const rec of recResults.values()) {
                 const li = document.createElement('li');
                 li.innerHTML = `
@@ -261,3 +270,10 @@
 </body>
 
 </html>
+
+
+<!-- 
+TODO: 
+- Go through Tabors book list, extract tags, look for tags.
+- Have TAbor verify what the goal is. Do we know the genre going in? or will we just use the given book to get recommendations for EVERY Genre?
+-->
