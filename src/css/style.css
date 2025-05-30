@@ -1,7 +1,10 @@
+
 @import url('./partials/variables.css');
 @import url('./partials/utilities.css');
 @import url('./partials/global.css');
 @import url('./partials/header.css');
+@import url('./partials/footer.css');
+
 
 
 /* Temporary CSS for the API Test */
