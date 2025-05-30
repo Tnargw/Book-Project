@@ -247,7 +247,7 @@ for (const tag of workData.subjects || []) {
             if (!recResults.size) {
               recContainer.innerHTML = '<p>No recommendations found.</p>';
             } else {
-              const list = document.createElement('ul');
+              const list = document.createElement('ul'); 
               for (const rec of recResults.values()) {
                 const li = document.createElement('li');
                 li.innerHTML = `
