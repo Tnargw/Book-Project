@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - YourSiteName</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  <header id="main-header">
+    <div class="logo">STORIUM</div>
+    <nav class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LIBRARY</a>
+    </nav>
+    <button class="sketchpad-btn">SKETCHPAD</button>
+  </header>
+
+  <main class="login-container">
+    <section class="login-left">
+      <h1>STORIUM</h1>
+      <p>Begin your creative journey into the unknown. Discover, create, and explore.</p>
+      <div class="login-buttons">
+        <button>New Adventurer</button>
+        <button>Returning Adventurer</button>
+      </div>
+    </section>
+    <section class="login-right">
+      <!-- Blank area -->
+    </section>
+  </main>
+
+  <footer>
+    <button>Help</button>
+    <button>Contact</button>
+    <button>Media</button>
+  </footer>
+
+  <script>
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

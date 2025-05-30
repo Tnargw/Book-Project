@@ -1,0 +1,39 @@
+:root {
+    --color1: #ffffff;
+    --color2: #000000;
+    --color3: #868686;
+    --color4: #c8c8c8;
+  }
+
+  @keyframes rainbowFlash {
+    0%   { color: #f39aa8; } /* pastel pink */
+    20%  { color: #f5cf76; } /* pastel yellow */
+    40%  { color: #75e8ac; } /* pastel mint */
+    60%  { color: #9bcbff; } /* pastel blue */
+    80%  { color: #d1a5ff; } /* pastel lavender */
+    100% { color: #ffa0ae; } /* back to pink */
+  }
+
+  @keyframes flashWhite {
+    0% {
+      color: var(--color2);
+    }
+    40% {
+      color: var(--color3);
+    }
+    100% {
+      color: var(--color2);
+    }
+  }
+
+  @keyframes flashGrey {
+    0% {
+      color: var(--color1);
+    }
+    30% {
+      color: var(--color4);
+    }
+    100% {
+      color: var(--color1);
+    }
+  }

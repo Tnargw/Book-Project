@@ -1,0 +1,33 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: var(--color2, #000);
+  color: var(--color1, #fff);
+  font-size: 0.9rem; /* Add this to control footer text size */
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: var(--color3, #868686);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.7s ease; 
+  transform-origin: center;
+}
+
+footer button:hover{
+  color: var(--color1,  #fff);
+  animation: flashGrey 0.7s ease;
+  transform: scale(1.2);
+}
+
+
+

@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+/* body:hover{
+  animation: rainbowFlash 2s linear infinite;
+} */
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
