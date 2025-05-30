@@ -5,7 +5,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   background-color: var(--color2, #000);
   color: var(--color1, #fff);
   font-size: 0.9rem; /* Add this to control footer text size */
@@ -28,6 +28,3 @@ footer button:hover{
   animation: flashGrey 0.7s ease;
   transform: scale(1.2);
 }
-
-
-

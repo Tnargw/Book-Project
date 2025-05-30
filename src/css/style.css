@@ -1,11 +1,14 @@
+
 @import url('./partials/variables.css');
 @import url('./partials/utilities.css');
 @import url('./partials/global.css');
 @import url('./partials/header.css');
+@import url('./partials/footer.css');
+
 
 
 /* Temporary CSS for the API Test */
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 2rem;
   background: #f9f9f9;
@@ -36,4 +39,4 @@ label {
 img {
   vertical-align: middle;
   margin-right: 10px;
-}
+} */
