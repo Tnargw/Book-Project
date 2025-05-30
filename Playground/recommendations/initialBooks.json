@@ -1,0 +1,783 @@
+{
+    "no restrictions": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "ya-language": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "ya": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "kids": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {
+            "What Do You Do With a Problem?": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "weZhzgEACAAJ",
+                        "etag": "FoAA8xyO220",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/weZhzgEACAAJ",
+                        "volumeInfo": {
+                            "title": "What Do You Do with a Problem?",
+                            "authors": [
+                                "Kobi Yamada"
+                            ],
+                            "publishedDate": "2021",
+                            "description": "This is the story of a persistent problem and the child who isn't so sure what to make of it. The longer the problem is avoided, the bigger it seems to get. But when the child finally musters up the courage to face it, the problem turns out to be something quite different than it appeared. What Do You Do With a Problem? is a story for anyone, at any age, who has ever had a problem that they wished would go away. It's a story to inspire you to look closely at that problem and to find out why it's here. Because you might discover something amazing about your problem... and yourself.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1952183804"
+                                },
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781952183805"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 40,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Creative ability"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "preview-1.0.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=weZhzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=weZhzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=weZhzgEACAAJ&dq=What+Do+You+Do+With+a+Problem%3F&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=weZhzgEACAAJ&dq=What+Do+You+Do+With+a+Problem%3F&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/What_Do_You_Do_with_a_Problem.html?hl=&id=weZhzgEACAAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "NO_PAGES",
+                            "embeddable": false,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=weZhzgEACAAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "NONE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "This is the story of a persistent problem and the child who isn&#39;t so sure what to make of it."
+                        }
+                    }
+                ]
+            },
+            "You Can Be a Friend": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "nLJUCqMBPjsC",
+                        "etag": "SYo5dhNHjT8",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/nLJUCqMBPjsC",
+                        "volumeInfo": {
+                            "title": "You Can Be a Friend",
+                            "authors": [
+                                "Lauren Dungy",
+                                "Tony Dungy"
+                            ],
+                            "publisher": "Simon and Schuster",
+                            "publishedDate": "2011-01-11",
+                            "description": "This will be the second title in Lauren and Tony Dungy’s series of children’s books which feature great stories that remind kids of the importance of family, friends, confidence, determination—and believing that anything is possible if you dream big. In this story, Jade has been planning to have her birthday party at a water park, but her new friend, Hannah, is in a wheelchair. Now Jade has a decision to make: Is it more important to keep the celebration where she planned, or to make sure all of her friends will have fun? Parents and their children will love reading and discussing this beautiful book, which celebrates the talents and strengths we all have, no matter our physical ability.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781442433052"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1442433051"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": true,
+                                "image": true
+                            },
+                            "pageCount": 32,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Fiction"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "1.10.5.0.preview.3",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=nLJUCqMBPjsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=nLJUCqMBPjsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=nLJUCqMBPjsC&printsec=frontcover&dq=You+Can+Be+a+Friend&hl=&cd=1&source=gbs_api",
+                            "infoLink": "https://play.google.com/store/books/details?id=nLJUCqMBPjsC&source=gbs_api",
+                            "canonicalVolumeLink": "https://play.google.com/store/books/details?id=nLJUCqMBPjsC"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "FOR_SALE",
+                            "isEbook": true,
+                            "listPrice": {
+                                "amount": 10.99,
+                                "currencyCode": "USD"
+                            },
+                            "retailPrice": {
+                                "amount": 10.99,
+                                "currencyCode": "USD"
+                            },
+                            "buyLink": "https://play.google.com/store/books/details?id=nLJUCqMBPjsC&rdid=book-nLJUCqMBPjsC&rdot=1&source=gbs_api",
+                            "offers": [
+                                {
+                                    "finskyOfferType": 1,
+                                    "listPrice": {
+                                        "amountInMicros": 10990000,
+                                        "currencyCode": "USD"
+                                    },
+                                    "retailPrice": {
+                                        "amountInMicros": 10990000,
+                                        "currencyCode": "USD"
+                                    },
+                                    "giftable": true
+                                }
+                            ]
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "PARTIAL",
+                            "embeddable": true,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                            "epub": {
+                                "isAvailable": true,
+                                "acsTokenLink": "http://books.google.com/books/download/You_Can_Be_a_Friend-sample-epub.acsm?id=nLJUCqMBPjsC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                            },
+                            "pdf": {
+                                "isAvailable": true,
+                                "acsTokenLink": "http://books.google.com/books/download/You_Can_Be_a_Friend-sample-pdf.acsm?id=nLJUCqMBPjsC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=nLJUCqMBPjsC&hl=&source=gbs_api",
+                            "accessViewStatus": "SAMPLE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "In this story, Jade has been planning to have her birthday party at a water park, but her new friend, Hannah, is in a wheelchair."
+                        }
+                    }
+                ]
+            },
+            "The 7 Habits of Happy Kids": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "gCywtV2l3HcC",
+                        "etag": "xqfbVXFtrH8",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/gCywtV2l3HcC",
+                        "volumeInfo": {
+                            "title": "The 7 Habits of Happy Kids",
+                            "authors": [
+                                "Sean Covey"
+                            ],
+                            "publisher": "Simon and Schuster",
+                            "publishedDate": "2008-09-16",
+                            "description": "\"Offers a collection of stories that covers different habits with accessible tips and tools for improving one's life through practical lessons, discussing the importance of being proactive, planning, listening, and cooperation.\"--Publisher.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781416957768"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1416957766"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 94,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Fiction"
+                            ],
+                            "averageRating": 5,
+                            "ratingsCount": 1,
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "1.3.2.0.preview.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=gCywtV2l3HcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=gCywtV2l3HcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=gCywtV2l3HcC&printsec=frontcover&dq=The+7+Habits+of+Happy+Kids&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=gCywtV2l3HcC&dq=The+7+Habits+of+Happy+Kids&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/The_7_Habits_of_Happy_Kids.html?hl=&id=gCywtV2l3HcC"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "PARTIAL",
+                            "embeddable": true,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=gCywtV2l3HcC&hl=&source=gbs_api",
+                            "accessViewStatus": "SAMPLE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "&quot;Offers a collection of stories that covers different habits with accessible tips and tools for improving one&#39;s life through practical lessons, discussing the importance of being proactive, planning, listening, and cooperation."
+                        }
+                    }
+                ]
+            },
+            "What to Do When You Worry Too Much": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "u_EG0QEACAAJ",
+                        "etag": "JZ3RCoIe7VI",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/u_EG0QEACAAJ",
+                        "volumeInfo": {
+                            "title": "What to Do When You Worry Too Much",
+                            "subtitle": "A Kid's Guide to Overcoming Anxiety",
+                            "authors": [
+                                "Dawn Huebner"
+                            ],
+                            "publishedDate": "2024-08",
+                            "description": "\"Second edition, guides children and parents through the cognitive-behavioral techniques most often used in the treatment of anxiety\"--",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1433844893"
+                                },
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781433844898"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 0,
+                            "printType": "BOOK",
+                            "categories": [
+                                "JUVENILE NONFICTION"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "preview-1.0.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=u_EG0QEACAAJ&dq=What+to+Do+When+You+Worry+Too+Much&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=u_EG0QEACAAJ&dq=What+to+Do+When+You+Worry+Too+Much&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/What_to_Do_When_You_Worry_Too_Much.html?hl=&id=u_EG0QEACAAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "NO_PAGES",
+                            "embeddable": false,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=u_EG0QEACAAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "NONE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "&quot;Second edition, guides children and parents through the cognitive-behavioral techniques most often used in the treatment of anxiety&quot;--"
+                        }
+                    }
+                ]
+            },
+            "A Kids Book About... series": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "O5HAEAAAQBAJ",
+                        "etag": "UQYxtBjBDcg",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/O5HAEAAAQBAJ",
+                        "volumeInfo": {
+                            "title": "A Kids Book About Racism",
+                            "authors": [
+                                "Jelani Memory"
+                            ],
+                            "publisher": "Dorling Kindersley Ltd",
+                            "publishedDate": "2023-07-06",
+                            "description": "A clear explanation of what racism is and how to recognise it when you see it. As tough as it is to imagine, this book really does explore racism. But it does so in a way that's accessible to kids. Inside, you'll find a clear description of what racism is, how it makes people feel when they experience it, and how to spot it when it happens. Covering themes of racism, sadness, bravery, and hate. This book is designed to help get the conversation going. Racism is one conversation that's never too early to start, and this book was written to be an introduction on the topic for kids aged 5-9. A Kids Book About Racism features: - A friendly, approachable, and kid-appropriate tone throughout. - Expressive font design; allowing kids to have the space to reflect and the freedom to imagine themselves in the words on the pages. - An author who has lived experience on the topic of racism. Tackling important discourse together! The A Kids Book About series are best used when read together. Helping to kickstart challenging, empowering, and important conversations for kids and their grownups through beautiful and thought-provoking pages. The series supports an incredible and diverse group of authors, who are either experts in their field, or have first-hand experience on the topic. A Kids Co. is a new kind of media company enabling kids to explore big topics in a new and engaging way. With a growing series of books, podcasts and blogs, made to empower. Learn more about us online by searching for A Kids Co.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9780241645024"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "0241645026"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": true,
+                                "image": false
+                            },
+                            "pageCount": 66,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Nonfiction"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "1.3.2.0.preview.2",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=O5HAEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=O5HAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=O5HAEAAAQBAJ&dq=A+Kids+Book+About...+series&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=O5HAEAAAQBAJ&dq=A+Kids+Book+About...+series&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/A_Kids_Book_About_Racism.html?hl=&id=O5HAEAAAQBAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "NO_PAGES",
+                            "embeddable": false,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": true
+                            },
+                            "pdf": {
+                                "isAvailable": true
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=O5HAEAAAQBAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "NONE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "This book is designed to help get the conversation going. Racism is one conversation that&#39;s never too early to start, and this book was written to be an introduction on the topic for kids aged 5-9."
+                        }
+                    }
+                ]
+            },
+            "Mindset for Kids": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "dfe6PnUx4xcC",
+                        "etag": "wSpUq3jJffc",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/dfe6PnUx4xcC",
+                        "volumeInfo": {
+                            "title": "The Girl who Never Made Mistakes",
+                            "authors": [
+                                "Mark Pett",
+                                "Gary Rubinstein"
+                            ],
+                            "publisher": "Sourcebooks, Inc.",
+                            "publishedDate": "2011",
+                            "description": "\"Beatrice offers a lesson we could all benefit from: learn from your mistakes, let go, laugh, and enjoy the ride.\" --JENNIFER FOSBERRY, New York Times bestselling author of My Name Is Not Isabella Being perfect is overrated. Beatrice Bottomwell has NEVER (not once ) made a mistake. She never forgets her math homework, she never wears mismatched socks, and she ALWAYS wins the yearly talent show at school. In fact, the entire town calls her The Girl Who Never Makes Mistakes One day, the inevitable happens: Beatrice makes a huge mistake in front of everyone But in the end, readers (and perfectionists) will realize that life is more fun when you enjoy everything--even the mistakes. Additional praise for The Girl Who Never Made Mistakes: \"This funny and heartfelt book conveys a powerful message about how putting too much pressure on yourself to be perfect can suck the joy out of everything. Beatrice's discovery that you can laugh off even a very public mistake shows the importance of resiliency and helps perfectionist kids keep things in perspective. Most importantly, Beatrice reminds the reader that it's more important to enjoy the things that you do than worry about doing them perfectly.\" --A Mighty Girl \"The Girl Who Never Made Mistakes is a must-read for any young (or old ) perfectionist. Beatrice Bottomwell is perfectly imperfect \" --Stephanie Oppenheim, Oppenheim Toy Portfolio \"It's fun and instructive without feeling overly didactic and the illustrations are darling.\" --Parenting \"This book will help little perfectionists see that making mistakes is okay, and it can be a lot of fun too \" --Kids Book Blog",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781402255441"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1402255446"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": true
+                            },
+                            "pageCount": 34,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Fiction"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "0.2.2.0.preview.1",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=dfe6PnUx4xcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=dfe6PnUx4xcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=dfe6PnUx4xcC&printsec=frontcover&dq=Mindset+for+Kids&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=dfe6PnUx4xcC&dq=Mindset+for+Kids&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/The_Girl_who_Never_Made_Mistakes.html?hl=&id=dfe6PnUx4xcC"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "PARTIAL",
+                            "embeddable": true,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": true,
+                                "acsTokenLink": "http://books.google.com/books/download/The_Girl_who_Never_Made_Mistakes-sample-pdf.acsm?id=dfe6PnUx4xcC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=dfe6PnUx4xcC&hl=&source=gbs_api",
+                            "accessViewStatus": "SAMPLE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "Beatrice is so well-known for never making a mistake that she&#39;s greeted each morning by fans and reporters, but a near-error on the day of the school talent show could change everything."
+                        }
+                    }
+                ]
+            },
+            "Listening with My Heart": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "gCV6tAEACAAJ",
+                        "etag": "Uv5N9at/gxk",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/gCV6tAEACAAJ",
+                        "volumeInfo": {
+                            "title": "Listening with My Heart",
+                            "subtitle": "A Story of Kindness and Self-Compassion",
+                            "authors": [
+                                "Gabi Garcia"
+                            ],
+                            "publishedDate": "2018-12-05",
+                            "description": "\"In today's hypercompetitive world, kids often internalize the message that their worth is attached to their accomplishments and that messing up is something to be ashamed of, rather than a normal part of life, which can lead to critical self-talk. Listening with My Heart reminds us of the other golden rule--to treat ourselves like we would treat a friend. When we do this, we are practicing self-compassion.\"--",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "0998958042"
+                                },
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9780998958040"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 36,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Emotions"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "preview-1.0.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=gCV6tAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=gCV6tAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=gCV6tAEACAAJ&dq=Listening+with+My+Heart&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=gCV6tAEACAAJ&dq=Listening+with+My+Heart&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/Listening_with_My_Heart.html?hl=&id=gCV6tAEACAAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "NO_PAGES",
+                            "embeddable": false,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=gCV6tAEACAAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "NONE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "A young girl realizes that it is just as important to give love and kindness to herself as it is to give it to others."
+                        }
+                    }
+                ]
+            },
+            "How Full Is Your Bucket? For Kids": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "Qd5DCwAAQBAJ",
+                        "etag": "mMx5aanEMuU",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/Qd5DCwAAQBAJ",
+                        "volumeInfo": {
+                            "title": "How Full Is Your Bucket? For Kids",
+                            "authors": [
+                                "Tom Rath",
+                                "Mary Reckmeyer"
+                            ],
+                            "publisher": "Simon and Schuster",
+                            "publishedDate": "2009-04",
+                            "description": "Through the story of a little boy named Felix, this charming book explains to children how being kind not only helps others, it helps them, too. Illustrations.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781595620279"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1595620273"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 32,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Nonfiction"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "0.2.1.0.preview.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=Qd5DCwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=Qd5DCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=Qd5DCwAAQBAJ&printsec=frontcover&dq=How+Full+Is+Your+Bucket%3F+For+Kids&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=Qd5DCwAAQBAJ&dq=How+Full+Is+Your+Bucket%3F+For+Kids&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/How_Full_Is_Your_Bucket_For_Kids.html?hl=&id=Qd5DCwAAQBAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "PARTIAL",
+                            "embeddable": true,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=Qd5DCwAAQBAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "SAMPLE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "Through the story of a little boy named Felix, this charming book explains to children how being kind not only helps others, it helps them, too. Illustrations."
+                        }
+                    }
+                ]
+            },
+            "Be Kind": {
+                "kind": "books#volumes",
+                "totalItems": 1000000,
+                "items": [
+                    {
+                        "kind": "books#volume",
+                        "id": "ARNFDwAAQBAJ",
+                        "etag": "w8/a8gTFbyk",
+                        "selfLink": "https://www.googleapis.com/books/v1/volumes/ARNFDwAAQBAJ",
+                        "volumeInfo": {
+                            "title": "Be Kind",
+                            "authors": [
+                                "Pat Zietlow Miller"
+                            ],
+                            "publishedDate": "2018-02-06",
+                            "description": "A thoughtful picture book illustrating the power of small acts of kindness, from the award-winning author of Sophie's Squash.",
+                            "industryIdentifiers": [
+                                {
+                                    "type": "ISBN_13",
+                                    "identifier": "9781626723214"
+                                },
+                                {
+                                    "type": "ISBN_10",
+                                    "identifier": "1626723214"
+                                }
+                            ],
+                            "readingModes": {
+                                "text": false,
+                                "image": false
+                            },
+                            "pageCount": 37,
+                            "printType": "BOOK",
+                            "categories": [
+                                "Juvenile Fiction"
+                            ],
+                            "maturityRating": "NOT_MATURE",
+                            "allowAnonLogging": false,
+                            "contentVersion": "0.1.1.0.preview.0",
+                            "panelizationSummary": {
+                                "containsEpubBubbles": false,
+                                "containsImageBubbles": false
+                            },
+                            "imageLinks": {
+                                "smallThumbnail": "http://books.google.com/books/content?id=ARNFDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                                "thumbnail": "http://books.google.com/books/content?id=ARNFDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            },
+                            "language": "en",
+                            "previewLink": "http://books.google.com/books?id=ARNFDwAAQBAJ&printsec=frontcover&dq=Be+Kind&hl=&cd=1&source=gbs_api",
+                            "infoLink": "http://books.google.com/books?id=ARNFDwAAQBAJ&dq=Be+Kind&hl=&source=gbs_api",
+                            "canonicalVolumeLink": "https://books.google.com/books/about/Be_Kind.html?hl=&id=ARNFDwAAQBAJ"
+                        },
+                        "saleInfo": {
+                            "country": "US",
+                            "saleability": "NOT_FOR_SALE",
+                            "isEbook": false
+                        },
+                        "accessInfo": {
+                            "country": "US",
+                            "viewability": "PARTIAL",
+                            "embeddable": true,
+                            "publicDomain": false,
+                            "textToSpeechPermission": "ALLOWED",
+                            "epub": {
+                                "isAvailable": false
+                            },
+                            "pdf": {
+                                "isAvailable": false
+                            },
+                            "webReaderLink": "http://play.google.com/books/reader?id=ARNFDwAAQBAJ&hl=&source=gbs_api",
+                            "accessViewStatus": "SAMPLE",
+                            "quoteSharingAllowed": false
+                        },
+                        "searchInfo": {
+                            "textSnippet": "A thoughtful picture book illustrating the power of small acts of kindness, from the award-winning author of Sophie&#39;s Squash."
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
