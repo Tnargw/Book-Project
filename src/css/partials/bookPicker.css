@@ -1,0 +1,52 @@
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        #books {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .book-card {
+            width: 160px;
+            margin: 10px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .book-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .book-title {
+            opacity: 0;
+            transition: opacity 0.3s;
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .book-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .book-card:hover .book-title {
+            opacity: 1;
+        }
+        .selected {
+            border: 3px solid #4CAF50;
+            box-shadow: 0 0 15px rgba(0,128,0,0.5);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }

@@ -1,0 +1,46 @@
+{
+    "no restrictions": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "ya-language": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "ya": {
+        "literary fiction": {},
+        "mystery / thriller": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance": {},
+        "horror": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    },
+    "kids": {
+        "literary fiction": {},
+        "mystery": {},
+        "science fiction": {},
+        "fantasy": {},
+        "romance / friendship": {},
+        "horror / spooky": {},
+        "historical fiction": {},
+        "memoir / biography": {},
+        "non-fiction / self-help": {}
+    }
+}
