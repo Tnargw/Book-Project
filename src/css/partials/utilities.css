@@ -1,28 +1,42 @@
-/* .flex {
-    display: flex;
+.login-container {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  /* inset: 0; */
+  top: 38%;
+  left: 0;
+  right: 0;
+  /* top: 20%;
+  left: 20%; */
+}
+
+.login {
+  pointer-events: auto; /* re-enable interaction only on the login box */
+  text-align: center;
+}
+
+.login h1, .login p{
+  user-select: none;
+}
+
+.login {
+  max-width: 70%; /* Optional: control width */
+}
+
+
+  .login-container button {
+    border: 1px solid var(--color1);
+    background-color: var(--color2);
+    font-size: .8rem;
+    padding: 0.5rem;
+    color: var(--color1); /* Ensure base color is defined */
+    transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+    letter-spacing: .15rem;
   }
   
-  .justify-between {
-    justify-content: space-between;
+ .login-container button:hover{
+  border: 1px solid var(--color2);
+  background-color: var(--color1);
+  color: var(--color2);
   }
-  
-  .align-center {
-    align-items: center;
-  }
-  
-  .text-bold {
-    font-weight: bold;
-  } */
-  
-  /* .btn {
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-outline {
-    background: none;
-    border: 2px solid currentColor;
-    color: inherit;
-  } */
+
