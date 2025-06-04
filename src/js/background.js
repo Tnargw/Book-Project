@@ -1,16 +1,18 @@
+// === Device Detection and Canvas Setup ===
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-const pixelSize = isMobile ? 40 : 20;
+const pixelSize = isMobile ? 40 : 40;
 const canvas = document.getElementById('backgroundCanvas');
 const context = canvas.getContext('2d');
 
+// === State Variables ===
 let lockedColor = null;
 let touchColorLocked = null;
 let keyIsHeld = false;
 let longPressTimeout = null;
-
 let drawnPixels = [];
-const pixelLifetime = 2000; // pixels dissolve after 2 seconds
+const pixelLifetime = 8000; // pixels dissolve (1000 = 1 sec)
 
+// === Canvas Resizing ===
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -18,14 +20,10 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
+// === Utility Functions ===
 function snapToGrid(value, gridSize) {
   return Math.round(value / gridSize) * gridSize;
 }
-
-let isDragging = false;
-let lastX = 0;
-let lastY = 0;
-let lastTime = 0;
 
 function getEventCoordinates(e) {
   if (e.touches && e.touches[0]) {
@@ -34,6 +32,13 @@ function getEventCoordinates(e) {
   return { x: e.clientX, y: e.clientY };
 }
 
+// === Drawing State Variables ===
+let isDragging = false;
+let lastX = 0;
+let lastY = 0;
+let lastTime = 0;
+
+// === Drawing Handlers ===
 function startDrawing(e) {
   e.preventDefault();
   isDragging = true;
@@ -54,6 +59,7 @@ function draw(e) {
   const dt = performance.now() - lastTime;
 
   if (dx === 0 && dy === 0) return;
+
   const dragAngle = 180 * Math.atan2(dx, dy) / Math.PI;
   const speed = Math.sqrt(dx * dx + dy * dy) / dt;
   const rainbowColor = `hsl(${dragAngle}, 86%, ${30 + Math.min(speed * 1000, 50)}%)`;
@@ -78,6 +84,7 @@ function stopDrawing() {
   isDragging = false;
 }
 
+// === Event Listeners for Drawing ===
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('touchstart', (e) => {
   e.preventDefault();
@@ -104,6 +111,7 @@ window.addEventListener('touchend', () => {
   stopDrawing();
 });
 
+// === Keyboard Interaction (Color Locking) ===
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Shift') keyIsHeld = true;
 });
@@ -114,22 +122,49 @@ window.addEventListener('keyup', (e) => {
   }
 });
 
+// === Animation Loop ===
 function animate() {
   const now = performance.now();
-  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Clear with white background
+  context.globalAlpha = 1;
+  context.fillStyle = "#ffffff";
+  context.fillRect(0, 0, canvas.width, canvas.height);
 
   drawnPixels = drawnPixels.filter(pixel => {
-    const age = now - pixel.createdAt;
-    if (age < pixelLifetime) {
-      context.globalAlpha = 1 - age / pixelLifetime;
+    // While dragging, keep all pixels alive regardless of age
+    if (isDragging) {
+      context.globalAlpha = 1;
       context.fillStyle = pixel.color;
       context.fillRect(pixel.x, pixel.y, pixel.size, pixel.size);
       return true;
     }
-    return false;
+
+    // Once drawing stopped, pixels start disappearing
+    const age = now - pixel.createdAt;
+    if (age >= pixelLifetime) {
+      return false;
+    }
+
+    const lifeProgress = age / pixelLifetime;
+    const blipProbability = Math.pow(lifeProgress, 3) * 0.1;
+
+    if (Math.random() < blipProbability) {
+      return false;
+    }
+
+    context.globalAlpha = 1;
+    context.fillStyle = pixel.color;
+    context.fillRect(pixel.x, pixel.y, pixel.size, pixel.size);
+
+    return true;
   });
 
-  context.globalAlpha = 1; // Reset alpha
+  context.globalAlpha = 1;
   requestAnimationFrame(animate);
 }
-animate();
+
+
+
+animate();  // Start the animation loop!
+

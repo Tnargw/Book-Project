@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Adventurer - STORYIUM</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+  <script src="src/js/background.js" defer></script>
+    <!-- <script src="src/js/utils.js" defer></script> -->
+</head>
+<body>
+  <canvas id="backgroundCanvas"></canvas>
+
+  <header id="main-header">
+    <div class="logo">STORYIUM</div>
+    <nav class="nav-links">
+      <a href="login.html">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LIBRARY</a>
+    </nav>
+    <button class="sketchpad-btn">SKETCHPAD</button>
+  </header>
+
+  <main class="login-container">
+    <section class="login">
+      <h1>Welcome, Adventurer!</h1>
+      <form id="adventure-form">
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="birthday">Your Birthday:</label>
+          <input type="date" id="birthday" name="birthday" required />
+        </div>
+        <button type="button" onclick="checkAge()">Continue</button>
+
+        <div class="restrictions" id="restrictions-section">
+          <h3>Choose Content Restrictions</h3>
+          <div class="button-group">
+            <button type="button">I dont</button>
+            <button type="button">remember the </button>
+            <button type="button">categories right now</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <button>Help</button>
+    <button>Contact</button>
+    <button>Media</button>
+  </footer>
+<script>
+    // New Adventurer Calendar age restriction beginning (temp location?)
+
+function checkAge() {
+  const birthday = new Date(document.getElementById('birthday').value);
+  const today = new Date();
+  let age = today.getFullYear() - birthday.getFullYear();
+  const m = today.getMonth() - birthday.getMonth();
+
+  if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+    age--;
+  }
+
+  const restrictions = document.getElementById('restrictions-section');
+
+  if (age >= 13) {
+    restrictions.style.display = 'block';
+  } else {
+    restrictions.style.display = 'none';
+    alert('Great! You’re ready to begin your journey!');
+    // Optionally, proceed to next step here
+  }
+}
+
+</script>
+
+</body>
+</html>
