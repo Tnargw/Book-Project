@@ -1,16 +1,18 @@
-        body {
+        /* body {
             font-family: Arial, sans-serif;
             text-align: center;
             background: #f9f9f9;
             margin: 0;
             padding: 20px;
         }
+            
         #books {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 20px;
         }
+
         .book-card {
             width: 160px;
             margin: 10px;
@@ -49,4 +51,4 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-        }
+        } */
