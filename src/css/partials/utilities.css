@@ -46,10 +46,11 @@
     border: var(--color5);
     background-color: var(--color2);
     font-size: .8rem;
-    padding: .6rem .8rem .6rem .8rem;
+    padding: .6rem 1rem .6rem 1rem;
     color: var(--color1); /* Ensure base color is defined */
     transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
     letter-spacing: .15rem;
+    border-radius: 999px;
   }
   
  .login-container button:hover{
@@ -63,6 +64,7 @@
     justify-content: center;
     gap: 2rem; /* Adjust spacing between buttons */
     margin-top: 1.5rem;
+    
   }
   
 
@@ -94,19 +96,50 @@
       flex-wrap: wrap;
     }
 
+    .restrictions h3{
+      margin-bottom: 0rem;
+    }
 
+
+    #continue-btn button {
+      border: var(--color5);
+      background-color: var(--color2);
+      font-size: .8rem;
+      padding: .6rem .8rem .6rem .8rem;
+      color: var(--color1); 
+      transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+      letter-spacing: .15rem;
+    }
+    
+   #continue-btn button:hover{
+    border: 1px solid var(--color2);
+    background-color: var(--color5);
+    color: var(--color2);
+    border-radius: 999px;
+
+    }
+  
+    #continue-btn {
+      margin-top: 1.7rem;
+    }
   
 /* ===== reading preferences toggle ====== */
 
 .slider-toggle {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  width: 300px;
-  background: #ddd;
-  border-radius: 30px;
+  align-items: center;
+  position: relative;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 480px;
+  height: 40px;
+  background: var(--color1);
+  border-radius: 999px;
   overflow: hidden;
-  margin-top: 1em;
+  padding: 0rem;
+  gap: 0.5rem;
+  border: 2px solid var(--color2);
 }
 
 .slider-toggle input[type="radio"] {
@@ -116,36 +149,50 @@
 .slider-toggle label {
   flex: 1;
   text-align: center;
-  padding: 10px 0;
+  padding: 0.75rem 0;
   cursor: pointer;
   z-index: 2;
-  transition: color 0.3s;
-  font-weight: bold;
+  position: relative;
+  font-weight: 600;
+  color: var(--color3);
+  transition: color 0.3s ease;
 }
 
+/* Slider highlight */
 .slider-toggle .slider {
   position: absolute;
   top: 0;
-  bottom: 0;
+  left: 0;
+  height: 100%;
   width: 33.3333%;
-  background: #4CAF50;
-  transition: transform 0.3s;
-  border-radius: 30px;
+  background: var(--color2);
+  border-radius: 999px;
   z-index: 1;
+  transition: transform 0.3s ease;
 }
 
+/* Move the slider */
 #adult:checked ~ .slider {
   transform: translateX(0%);
 }
+
 #young-adult:checked ~ .slider {
   transform: translateX(100%);
 }
+
 #children:checked ~ .slider {
   transform: translateX(200%);
 }
 
+/* Highlight selected label */
 #adult:checked ~ label[for="adult"],
 #young-adult:checked ~ label[for="young-adult"],
 #children:checked ~ label[for="children"] {
   color: white;
+}
+
+#restriction-description{ 
+  color: var(--color3);
+  margin-top:1em; 
+  font-style: italic;
 }

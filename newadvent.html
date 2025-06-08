@@ -33,31 +33,27 @@
           <label for="birthday">Your Birthday:</label>
           <input type="date" id="birthday" name="birthday" required />
         </div>
-        <button type="button" onclick="checkAge()">Continue</button>
 
-        <div class="restrictions" id="restrictions-section">
+        <div class="restrictions" id="restrictions-section" style="display:none;">
           <h3>Choose Content Restrictions</h3>
-          <p>Set Perameters</p>
-         
-            <div class="slider-toggle" id="content-toggle">
-              <input type="radio" name="content" id="adult" value="adult">
-              <label for="adult">Adult</label>
-              
-              <input type="radio" name="content" id="young-adult" value="young-adult">
-              <label for="young-adult">Young Adult</label>
-              
-              <input type="radio" name="content" id="children" value="children">
-              <label for="children">Children</label>
-              
-              <div class="slider"></div>
-            </div>
+          <div class="slider-toggle" id="content-toggle">
+            <input type="radio" name="content" id="adult" value="adult">
+            <label for="adult">Adult</label>
             
-          <button type="button" id="restriction-continue">Confirm Selection</button>
-          
-          
-                      <!-- Descriptions of each appear under each -->
+            <input type="radio" name="content" id="young-adult" value="young-adult" checked>
+            <label for="young-adult">Young Adult</label>
+            
+            <input type="radio" name="content" id="children" value="children">
+            <label for="children">Children</label>
+            
+            <div class="slider"></div>
+          </div>
 
+          <div id="restriction-description" class="description-box" ></div>
+          
         </div>
+
+        <button type="button" id="continue-btn">CONTINUE</button>
       </form>
     </section>
   </main>
@@ -67,8 +63,6 @@
     <button>Contact</button>
     <button>Media</button>
   </footer>
-
-
 
 </body>
 </html>
