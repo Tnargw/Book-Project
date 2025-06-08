@@ -6,7 +6,7 @@
   <title>New Adventurer - STORYIUM</title>
   <link rel="stylesheet" href="src/css/style.css" />
   <script src="src/js/background.js" defer></script>
-    <!-- <script src="src/js/utils.js" defer></script> -->
+  <script src="src/js/agecheck.js" defer></script>
 </head>
 <body>
   <canvas id="backgroundCanvas"></canvas>
@@ -37,11 +37,26 @@
 
         <div class="restrictions" id="restrictions-section">
           <h3>Choose Content Restrictions</h3>
-          <div class="button-group">
-            <button type="button">I dont</button>
-            <button type="button">remember the </button>
-            <button type="button">categories right now</button>
-          </div>
+          <p>Set Perameters</p>
+         
+            <div class="slider-toggle" id="content-toggle">
+              <input type="radio" name="content" id="adult" value="adult">
+              <label for="adult">Adult</label>
+              
+              <input type="radio" name="content" id="young-adult" value="young-adult">
+              <label for="young-adult">Young Adult</label>
+              
+              <input type="radio" name="content" id="children" value="children">
+              <label for="children">Children</label>
+              
+              <div class="slider"></div>
+            </div>
+            
+          <button type="button" id="restriction-continue">Confirm Selection</button>
+          
+          
+                      <!-- Descriptions of each appear under each -->
+
         </div>
       </form>
     </section>
@@ -52,31 +67,8 @@
     <button>Contact</button>
     <button>Media</button>
   </footer>
-<script>
-    // New Adventurer Calendar age restriction beginning (temp location?)
 
-function checkAge() {
-  const birthday = new Date(document.getElementById('birthday').value);
-  const today = new Date();
-  let age = today.getFullYear() - birthday.getFullYear();
-  const m = today.getMonth() - birthday.getMonth();
 
-  if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
-    age--;
-  }
-
-  const restrictions = document.getElementById('restrictions-section');
-
-  if (age >= 13) {
-    restrictions.style.display = 'block';
-  } else {
-    restrictions.style.display = 'none';
-    alert('Great! You’re ready to begin your journey!');
-    // Optionally, proceed to next step here
-  }
-}
-
-</script>
 
 </body>
 </html>

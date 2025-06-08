@@ -96,3 +96,56 @@
 
 
   
+/* ===== reading preferences toggle ====== */
+
+.slider-toggle {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  background: #ddd;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-top: 1em;
+}
+
+.slider-toggle input[type="radio"] {
+  display: none;
+}
+
+.slider-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.slider-toggle .slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 33.3333%;
+  background: #4CAF50;
+  transition: transform 0.3s;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+#adult:checked ~ .slider {
+  transform: translateX(0%);
+}
+#young-adult:checked ~ .slider {
+  transform: translateX(100%);
+}
+#children:checked ~ .slider {
+  transform: translateX(200%);
+}
+
+#adult:checked ~ label[for="adult"],
+#young-adult:checked ~ label[for="young-adult"],
+#children:checked ~ label[for="children"] {
+  color: white;
+}

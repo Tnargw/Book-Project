@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nested Toggle Switch</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+  }
+
+  .toggle-container {
+    width: 200px;
+    position: relative;
+    user-select: none;
+  }
+
+  .toggle-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  /* Outer toggle */
+  .outer-toggle {
+    width: 100%;
+    background: #eee;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+  }
+
+  .outer-toggle.expanded {
+    width: 320px;
+  }
+
+  .toggle-option {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+
+  .toggle-option.active {
+    color: white;
+  }
+
+  /* Outer toggle button */
+  .toggle-button {
+    position: relative;
+    width: 60px;
+    height: 28px;
+    background: #2196f3;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: left 0.3s ease;
+    left: 0;
+  }
+
+  .outer-toggle.restricted .toggle-button {
+    left: 80px;
+    width: 120px;
+  }
+
+  /* Inner toggle inside button when restricted */
+  .inner-toggle {
+    display: none;
+    position: relative;
+    width: 120px;
+    height: 28px;
+    background: #4caf50;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 28px;
+    user-select: none;
+  }
+
+  .inner-toggle.active-children {
+    background: #ff5722;
+  }
+
+  .inner-toggle.active-youngadult {
+    background: #4caf50;
+  }
+
+  /* Show inner toggle only when restricted */
+  .outer-toggle.restricted .inner-toggle {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="toggle-container">
+  <label class="toggle-label">Content Access</label>
+  <div id="outerToggle" class="outer-toggle">
+    <div id="unrestricted" class="toggle-option active">Unrestricted</div>
+    <div id="restricted" class="toggle-option">Restricted</div>
+    <div class="toggle-button">
+      <div id="innerToggle" class="inner-toggle active-youngadult">Young Adult</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const outerToggle = document.getElementById('outerToggle');
+  const unrestricted = document.getElementById('unrestricted');
+  const restricted = document.getElementById('restricted');
+  const innerToggle = document.getElementById('innerToggle');
+
+  // Track states
+  let isRestricted = false;
+  let isYoungAdult = true;
+
+  // Update UI based on states
+  function updateOuterToggle() {
+    if (isRestricted) {
+      outerToggle.classList.add('restricted', 'expanded');
+      unrestricted.classList.remove('active');
+      restricted.classList.add('active');
+      innerToggle.style.display = 'block';
+    } else {
+      outerToggle.classList.remove('restricted', 'expanded');
+      unrestricted.classList.add('active');
+      restricted.classList.remove('active');
+      innerToggle.style.display = 'none';
+    }
+  }
+
+  function updateInnerToggle() {
+    if (isYoungAdult) {
+      innerToggle.textContent = 'Young Adult';
+      innerToggle.classList.add('active-youngadult');
+      innerToggle.classList.remove('active-children');
+    } else {
+      innerToggle.textContent = 'Children';
+      innerToggle.classList.add('active-children');
+      innerToggle.classList.remove('active-youngadult');
+    }
+  }
+
+  // Outer toggle click handlers
+  unrestricted.addEventListener('click', () => {
+    isRestricted = false;
+    updateOuterToggle();
+  });
+
+  restricted.addEventListener('click', () => {
+    isRestricted = true;
+    updateOuterToggle();
+  });
+
+  // Inner toggle click handler
+  innerToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent outer toggle toggle on inner click
+    isYoungAdult = !isYoungAdult;
+    updateInnerToggle();
+  });
+
+  // Initialize states UI
+  updateOuterToggle();
+  updateInnerToggle();
+</script>
+
+</body>
+</html>
