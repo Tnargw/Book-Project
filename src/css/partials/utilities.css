@@ -1,130 +1,162 @@
+/* === Layout Containers === */
 .login-container {
-  display: grid;
-  place-items: center;
   position: absolute;
-  /* inset: 0; */
   top: 30%;
-  left: 0;
-  right: 0;
-  /* top: 20%;
-  left: 20%; */
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let clicks pass through by default */
 }
 
+.welcome-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let clicks pass through by default */
+}
+
+/* === Main Block Styling === */
+.login,
+.welcome {
+  pointer-events: auto;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* === Typography === */
+.login h1,
+.welcome h1 {
+  font-size: 5.45rem;
+  margin: 0 auto;
+  text-align: center;
+  user-select: none;
+}
+
+.login p,
+.welcome p,
+label {
+  user-select: none;
+}
+
+/* === Text Alignment and Spacing === */
 .login h1,
 .login p {
   text-align: left;
 }
-.login h1:hover{  
-  animation: rainbowFlash 2s linear infinite;
-}
-
-
-.login h1{
-  font-size: 5.45rem;
-  margin: 0 auto;
-}
-
 .login p:nth-of-type(2) {
   padding-bottom: 1.5rem;
 }
+.login p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+}
 
-.login {
-  pointer-events: auto; /* re-enable interaction only on the login box */
+.welcome h1 {
   text-align: center;
 }
 
-.login h1, .login p{
-  user-select: none;
+/* === Hover Effects === */
+.login h1:hover,
+.welcome h1:hover {
+  animation: rainbowFlash 2s linear infinite;
 }
 
-.login {
-  max-width: 70%; /* Optional: control width */
+/* === Button Styling (Shared) === */
+.login-container button,
+.welcome-container button,
+#continue-btn button {
+  border: var(--color5);
+  background-color: var(--color2);
+  font-size: .8rem;
+  padding: .6rem 1rem;
+  color: var(--color1);
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: .15rem;
+  border-radius: 999px;
 }
 
+#continue-btn button {
+  padding: .6rem .8rem;
+}
 
-  .login-container button {
-    border: var(--color5);
-    background-color: var(--color2);
-    font-size: .8rem;
-    padding: .6rem 1rem .6rem 1rem;
-    color: var(--color1); /* Ensure base color is defined */
-    transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
-    letter-spacing: .15rem;
-    border-radius: 999px;
-  }
-  
- .login-container button:hover{
+.login-container button:hover,
+.welcome-container button:hover,
+#continue-btn button:hover {
   border: 1px solid var(--color2);
   background-color: var(--color5);
   color: var(--color2);
-  }
+}
 
-  .login-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem; /* Adjust spacing between buttons */
-    margin-top: 1.5rem;
-    
-  }
-  
+/* === Button Layout === */
+.login-buttons,
+.welcome-buttons,
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
 
-  /* login css (temp location) */
+/* === Form Styling === */
+.form-group {
+  margin-bottom: 1rem;
+}
 
-    .restrictions {
-      display: none;
-      margin-top: 1rem;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-    }
-    input[type="text"],
-    input[type="date"] {
-      padding: 0.5rem;
-      width: 100%;
-      max-width: 300px;
-      font-size: 1rem;
-    }
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
 
-    .restrictions h3{
-      margin-bottom: 0rem;
-    }
+input[type="text"],
+input[type="date"] {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1rem;
+  background-color: var(--color5);
+  border-radius: 999px;
+  border: 2px solid var(--color2);
+}
 
 
-    #continue-btn button {
-      border: var(--color5);
-      background-color: var(--color2);
-      font-size: .8rem;
-      padding: .6rem .8rem .6rem .8rem;
-      color: var(--color1); 
-      transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
-      letter-spacing: .15rem;
-    }
-    
-   #continue-btn button:hover{
-    border: 1px solid var(--color2);
-    background-color: var(--color5);
-    color: var(--color2);
-    border-radius: 999px;
+input::placeholder {
+  color: var(--color3);
+  opacity: 1;
+}
 
-    }
-  
-    #continue-btn {
-      margin-top: 1.7rem;
-    }
-  
-/* ===== reading preferences toggle ====== */
+#birthday.empty {
+  color: var(--color3);
+}
 
+/* When filled, normal text color */
+#birthday:not(.empty) {
+  color: var(--color2); /* or your standard text color */
+}
+
+
+
+
+
+
+.restrictions {
+  display: none;
+  margin-top: 1rem;
+}
+
+.restrictions h3 {
+  margin-bottom: 0rem;
+}
+
+#continue-btn {
+  margin-top: 1.7rem;
+}
+
+/* === Reading Preferences Toggle === */
 .slider-toggle {
   display: flex;
   justify-content: space-between;
@@ -137,8 +169,9 @@
   background: var(--color1);
   border-radius: 999px;
   overflow: hidden;
-  padding: 0rem;
+  padding: 0;
   gap: 0.5rem;
+  background-color: var(--color5);
   border: 2px solid var(--color2);
 }
 
@@ -156,9 +189,11 @@
   font-weight: 600;
   color: var(--color3);
   transition: color 0.3s ease;
+  /* line-height: 40px;  */
+  transform: translateY(2px);
+
 }
 
-/* Slider highlight */
 .slider-toggle .slider {
   position: absolute;
   top: 0;
@@ -171,7 +206,7 @@
   transition: transform 0.3s ease;
 }
 
-/* Move the slider */
+/* === Reading Toggle Slider Movement === */
 #adult:checked ~ .slider {
   transform: translateX(0%);
 }
@@ -184,15 +219,15 @@
   transform: translateX(200%);
 }
 
-/* Highlight selected label */
 #adult:checked ~ label[for="adult"],
 #young-adult:checked ~ label[for="young-adult"],
 #children:checked ~ label[for="children"] {
-  color: white;
+  color: var(--color1);
 }
 
-#restriction-description{ 
+/* === Restriction Description === */
+#restriction-description {
   color: var(--color3);
-  margin-top:1em; 
+  margin-top: 1em;
   font-style: italic;
 }

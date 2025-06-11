@@ -128,8 +128,8 @@ function animate() {
 
   // Clear with white background
   context.globalAlpha = 1;
-  context.fillStyle = "#ffffff";
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
 
   drawnPixels = drawnPixels.filter(pixel => {
     // While dragging, keep all pixels alive regardless of age

@@ -96,3 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "nextpage.html";
   });
 });
+
+const birthdayInput = document.getElementById('birthday');
+
+
+
+function updateBirthdayColor() {
+  if (birthdayInput.value) {
+    birthdayInput.classList.remove('empty');
+  } else {
+    birthdayInput.classList.add('empty');
+  }
+}
+
+// Run on page load and whenever input changes
+document.addEventListener('DOMContentLoaded', updateBirthdayColor);
+birthdayInput.addEventListener('input', updateBirthdayColor);
