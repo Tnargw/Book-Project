@@ -1,28 +1,233 @@
-/* .flex {
-    display: flex;
-  }
-  
-  .justify-between {
-    justify-content: space-between;
-  }
-  
-  .align-center {
-    align-items: center;
-  }
-  
-  .text-bold {
-    font-weight: bold;
-  } */
-  
-  /* .btn {
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-outline {
-    background: none;
-    border: 2px solid currentColor;
-    color: inherit;
-  } */
+/* === Layout Containers === */
+.login-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let clicks pass through by default */
+}
+
+.welcome-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let clicks pass through by default */
+}
+
+/* === Main Block Styling === */
+.login,
+.welcome {
+  pointer-events: auto;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* === Typography === */
+.login h1,
+.welcome h1 {
+  font-size: 5.45rem;
+  margin: 0 auto;
+  text-align: center;
+  user-select: none;
+}
+
+.login p,
+.welcome p,
+label {
+  user-select: none;
+}
+
+/* === Text Alignment and Spacing === */
+.login h1,
+.login p {
+  text-align: left;
+}
+.login p:nth-of-type(2) {
+  padding-bottom: 1.5rem;
+}
+.login p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+}
+
+.welcome h1 {
+  text-align: center;
+}
+
+/* === Hover Effects === */
+.login h1:hover,
+.welcome h1:hover {
+  animation: rainbowFlash 2s linear infinite;
+}
+
+/* === Button Styling (Shared) === */
+.login-container button,
+.welcome-container button,
+#continue-btn button {
+  border: var(--color5);
+  background-color: var(--color2);
+  font-size: .8rem;
+  padding: .6rem 1rem;
+  color: var(--color1);
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: .15rem;
+  border-radius: 999px;
+}
+
+#continue-btn button {
+  padding: .6rem .8rem;
+}
+
+.login-container button:hover,
+.welcome-container button:hover,
+#continue-btn button:hover {
+  border: 1px solid var(--color2);
+  background-color: var(--color5);
+  color: var(--color2);
+}
+
+/* === Button Layout === */
+.login-buttons,
+.welcome-buttons,
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* === Form Styling === */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1rem;
+  background-color: var(--color5);
+  border-radius: 999px;
+  border: 2px solid var(--color2);
+}
+
+
+input::placeholder {
+  color: var(--color3);
+  opacity: 1;
+}
+
+#birthday.empty {
+  color: var(--color3);
+}
+
+/* When filled, normal text color */
+#birthday:not(.empty) {
+  color: var(--color2); /* or your standard text color */
+}
+
+
+
+
+
+
+.restrictions {
+  display: none;
+  margin-top: 1rem;
+}
+
+.restrictions h3 {
+  margin-bottom: 0rem;
+}
+
+#continue-btn {
+  margin-top: 1.7rem;
+}
+
+/* === Reading Preferences Toggle === */
+.slider-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 480px;
+  height: 40px;
+  background: var(--color1);
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0.5rem;
+  background-color: var(--color5);
+  border: 2px solid var(--color2);
+}
+
+.slider-toggle input[type="radio"] {
+  display: none;
+}
+
+.slider-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  font-weight: 600;
+  color: var(--color3);
+  transition: color 0.3s ease;
+  /* line-height: 40px;  */
+  transform: translateY(2px);
+
+}
+
+.slider-toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 33.3333%;
+  background: var(--color2);
+  border-radius: 999px;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+/* === Reading Toggle Slider Movement === */
+#adult:checked ~ .slider {
+  transform: translateX(0%);
+}
+
+#young-adult:checked ~ .slider {
+  transform: translateX(100%);
+}
+
+#children:checked ~ .slider {
+  transform: translateX(200%);
+}
+
+#adult:checked ~ label[for="adult"],
+#young-adult:checked ~ label[for="young-adult"],
+#children:checked ~ label[for="children"] {
+  color: var(--color1);
+}
+
+/* === Restriction Description === */
+#restriction-description {
+  color: var(--color3);
+  margin-top: 1em;
+  font-style: italic;
+}

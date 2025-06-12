@@ -1,72 +1,71 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    background-color: #ffffff00;
-    color: var(--color2);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 1000;
-  }
-  
-  header.scrolled {
-    background-color: var(--color2);
-    color: var(--color1);
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  /* When hovered, animate color flash and scale slightly */
-  .logo:hover {
-    animation: rainbowFlash 2s linear infinite;
-    /* transform: scale(1.1); */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff00;
+  color: var(--color2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1000;
+  user-select: none;
+}
+
+/* Header color change on scroll */
+header.scrolled {
+  background-color: var(--color2);
+  color: var(--color1);
+}
+
+/* Logo styling and animation */
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover,
 header .logo:hover {
-    animation: rainbowFlash 2s linear infinite;
-  }
+  animation: rainbowFlash 2s linear infinite;
+  /* transform: scale(1.1); */
+}
 
- 
-  
-  header .nav-links {
-    font-size: 1rem;
-    display: flex;
-    gap: 1.5rem;
-  }
+/* Nav links styles */
+header .nav-links {
+  font-size: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
 
-  header .nav-links a {
-    color: var(--color2); 
-    text-decoration: none;
-    transition: transform 0.7s ease; 
-    transform-origin: center;
-  }
-  
-  header .nav-links a:hover {
-    animation: flashWhite 0.7s ease;
-    transform: scale(1.2);
-  }
-  
-  
+header .nav-links a {
+  color: var(--color2);
+  text-decoration: none;
+  transition: transform 0.7s ease;
+  transform-origin: center;
+}
 
-  header button {
-    border: 1px solid var(--color1);
-    background-color: var(--color2);
-    font-size: .8rem;
-    padding: 0.5rem;
-    color: var(--color1); /* Ensure base color is defined */
-    transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
-    letter-spacing: .15rem;
-  }
+header .nav-links a:hover {
+  animation: flashWhite 0.7s ease;
+  transform: scale(1.2);
+}
 
-  header button:hover {
-    border: 1px solid var(--color2);
-    background-color: var(--color1);
-    color: var(--color2);
-  }
+/* Header buttons */
+header button {
+  border: va(--color5);
+  background-color: var(--color2);
+  font-size: 0.8rem;
+  padding: 0.5rem 0.7rem;
+  color: var(--color1); /* Ensure base color is defined */
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: 0.15rem;
+  border-radius: 999px;
+}
+
+header button:hover {
+  border: 1px solid var(--color2);
+  background-color: var(--color1);
+  color: var(--color2);
+}
+
