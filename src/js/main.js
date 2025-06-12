@@ -1,60 +1,80 @@
 import { searchBook } from './search.js';
-import { getRecommendations } from './recommend.js';
 import { prioritizedGenres } from './config.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Book Recommender loaded');
-  const input = document.getElementById('titleInput');
-  const btn = document.getElementById('searchButton');
-  const resultDiv = document.getElementById('results');
+// NEW: multi-book recommendation function
+export async function handleBookSearch(titles, customRenderer = null) {
+  const resultDiv = document.getElementById('results') || document.getElementById('recommendations');
+  resultDiv.innerHTML = '';
 
-  btn.addEventListener('click', handleSearch);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSearch();
-  });
+  let allRecommendations = [];
 
-  async function handleSearch() {
-    const title = input.value.trim();
-    resultDiv.innerHTML = '';
-    if (!title) return alert('Please enter a book title.');
-
+  for (const title of titles) {
     const search = await searchBook(title);
     if (!search) {
-      resultDiv.textContent = `No book found with title "${title}".`;
-      return;
+      console.log(`No book found for: ${title}`);
+      continue;
     }
 
-    const { doc, workData, ageGroup } = search;
+    const { doc, workData } = search;
 
-    resultDiv.innerHTML = `
-      <h3>Original Book</h3>
-      <p><strong>Title:</strong> ${workData.title || title}</p>
-      <p><strong>Author:</strong> ${doc.author_name?.join(', ') || 'Unknown'}</p>
-      <p><strong>Age Group:</strong> ${ageGroup || 'Not detected'}</p>
-    `;
+    const subjects = (workData.subjects || []).map(s => s.toLowerCase());
+    const validSubjects = subjects.filter(s => prioritizedGenres.includes(s));
 
-    const genre = (workData.subjects || [])
-      .map(s => s.toLowerCase())
-      .find(tag => prioritizedGenres.includes(tag)) || 'fantasy';
-
-    const recommendations = await getRecommendations(
-      genre,
-      doc.author_name?.[0]?.toLowerCase() || '',
-      ageGroup
-    );
-
-    const ul = document.createElement('ul');
-    recommendations.forEach(rec => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        ${rec.thumbnail ? `<img src="${rec.thumbnail}" height="50">` : ''}
-        <a href="${rec.link}" target="_blank">${rec.title}</a> – ${rec.authors}
-        <details><summary>Show JSON</summary><pre>${JSON.stringify(rec.raw, null, 2)}</pre></details>
-      `;
-      ul.appendChild(li);
-    });
-
-    resultDiv.appendChild(document.createElement('hr'));
-    resultDiv.appendChild(ul);
+    for (const subject of validSubjects) {
+      const recs = await getRecommendations(subject);
+      allRecommendations = allRecommendations.concat(recs);
+    }
   }
-});
+
+  // Deduplicate by book key (Open Library work key)
+  const deduped = {};
+  allRecommendations.forEach(rec => {
+    deduped[rec.link] = rec;  // Use link as unique identifier
+  });
+
+  // Shuffle results to keep things fresh
+  const finalRecs = shuffleArray(Object.values(deduped));
+
+  if (customRenderer) {
+    customRenderer(finalRecs);
+    return;
+  }
+
+  // Default rendering
+  const ul = document.createElement('ul');
+  finalRecs.forEach(rec => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      ${rec.thumbnail ? `<img src="${rec.thumbnail}" height="50">` : ''}
+      <a href="${rec.link}" target="_blank">${rec.title}</a> – ${rec.authors}
+    `;
+    ul.appendChild(li);
+  });
+
+  resultDiv.appendChild(ul);
+}
+
+// Keep your getRecommendations function simple again
+export async function getRecommendations(genre) {
+  const res = await fetch(`https://openlibrary.org/subjects/${encodeURIComponent(genre)}.json?limit=10`);
+  const data = await res.json();
+
+  return data.works.map(work => ({
+    title: work.title,
+    authors: (work.authors || []).map(a => a.name).join(', '),
+    thumbnail: work.cover_id 
+      ? `https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg` 
+      : null,
+    link: `https://openlibrary.org${work.key}`,
+    raw: work
+  }));
+}
+
+// Shuffle helper
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}

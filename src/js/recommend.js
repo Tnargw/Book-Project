@@ -43,5 +43,11 @@ export async function getRecommendations(genre, originalAuthor, detectedAgeGroup
     }
   }
 
+
+  Object.keys(localStorage).forEach(key => {
+    console.log(`${key}: ${localStorage.getItem(key)}`);
+});
+
+
   return Array.from(recResults.values());
 }
