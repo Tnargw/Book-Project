@@ -8,8 +8,6 @@
 <body>
 
     <h1>Book Picker</h1>
-    <input type="number" id="ageInput" placeholder="Enter your age">
-    <button id="chooseAgeButton">Show Books</button>
 
     <div id="categories"></div>
     <div id="books"></div>
@@ -25,21 +23,32 @@
     <!-- This script wires everything together -->
     <script type="module">
         import { chooseAge, submitQuiz, getSelectedBooks } from '../../src/js/bookPicker.js';
-        import { handleBookSearch } from '../../src/js/main.js';
 
-        document.getElementById("chooseAgeButton").addEventListener("click", chooseAge);
+        // Immediately run chooseAge on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            const age = localStorage.getItem('userAge');
+            const restriction = localStorage.getItem('contentRestriction');
+
+            if (!age || !restriction) {
+                alert("Missing age or content restriction. Please go back and select those first.");
+                window.location.href = "index.html"; // or wherever your setup page is
+                return;
+            }
+
+            chooseAge();
+        });
+
         document.getElementById("submitQuizButton").addEventListener("click", submitQuiz);
 
-        document.getElementById('searchButton').addEventListener('click', () => {
-    const titles = getSelectedBooks();
-    if (titles.length === 0) {
-        alert('Please select at least one book.');
-        return;
-    }
-    localStorage.setItem('selectedBooks', JSON.stringify(titles));
-    window.location.href = 'recommendations.html';
-});
-
+        document.getElementById("searchButton").addEventListener("click", () => {
+            const titles = getSelectedBooks();
+            if (titles.length === 0) {
+                alert('Please select at least one book.');
+                return;
+            }
+            localStorage.setItem('selectedBooks', JSON.stringify(titles));
+            window.location.href = 'recommendations.html';
+        });
     </script>
 </body>
 </html>

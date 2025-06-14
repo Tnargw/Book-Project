@@ -1,19 +1,46 @@
 let selectedAudience = null;
 
-function getAudience(age) {
-    if (age <= 12) return "kids";
-    if (age <= 16) return "ya";
-    if (age <= 25) return "ya-language";
-    return "no restrictions";
+function getAudience() {
+    const age = parseInt(localStorage.getItem('userAge'));
+    const restriction = localStorage.getItem('contentRestriction');
+
+    console.log("Selected contentRestriction:", restriction);
+    console.log("userAge audience:", age);
+
+    if (!age || !restriction) {
+        alert("Missing age or content restriction in localStorage.");
+        return null;
+    }
+
+    if (restriction === "children") {
+        return "kids";
+    }
+
+    if (restriction === "young-adult") {
+        return age < 17 ? "ya" : "ya-language";
+    }
+
+    if (restriction === "adult") {
+        return "no restrictions";
+    }
+
+    // fallback if something unexpected is in localStorage
+    alert("Unknown content restriction type.");
+    return null;
 }
 
+
 function chooseAge() {
-    const age = parseInt(document.getElementById("ageInput").value);
-    if (!age) return alert("Please enter your age");
+    const age = parseInt(localStorage.getItem("userAge"));
+    if (!age) {
+        alert("Missing age in localStorage");
+        return;
+    }
 
-    selectedAudience = getAudience(age);
+    selectedAudience = getAudience();
+    if (!selectedAudience) return;
+
     const audienceData = filledBooks[selectedAudience];
-
     const categoryContainer = document.getElementById("categories");
     categoryContainer.innerHTML = "";
 
@@ -29,6 +56,7 @@ function chooseAge() {
 
     document.getElementById("books").innerHTML = "";
 }
+
 
 function loadCategory(genre) {
     const books = filledBooks[selectedAudience][genre];
