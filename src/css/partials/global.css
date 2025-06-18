@@ -25,3 +25,57 @@ body {
   }
   
   
+
+  /* ===== Temp location for: Character css ===== */
+  .character-select-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  
+  .premade-characters {
+    width: 28%;
+  }
+  .custom-character {
+    width: 48%;
+  }
+ 
+  .character-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .character-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .character-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .character-option:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Selected effect (stays after click) */
+  .character-option.selected img {
+    transform: scale(2.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+    outline: 2px solid white;
+  }
+  
+  .continue-button-wrapper {
+    display: flex;
+    justify-content: center;
+    /* margin: 2rem 0; */
+  }

@@ -67,7 +67,8 @@ label {
 /* === Button Styling (Shared) === */
 .login-container button,
 .welcome-container button,
-#continue-btn button {
+#continue-btn button,
+.continue-button-wrapper button{
   border: var(--color5);
   background-color: var(--color2);
   font-size: .8rem;
@@ -82,9 +83,10 @@ label {
   padding: .6rem .8rem;
 }
 
-.login-container button:hover,
+.login-container button:hover, 
 .welcome-container button:hover,
-#continue-btn button:hover {
+#continue-btn button:hover, 
+.continue-button-wrapper button:hover {
   border: 1px solid var(--color2);
   background-color: var(--color5);
   color: var(--color2);

@@ -78,3 +78,60 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+
+
+// ======== Temp Are for: Character Selection =========
+
+// Example: when a premade character is clicked
+document.querySelectorAll('.character-option').forEach(option => {
+  option.addEventListener('click', () => {
+    const name = option.dataset.character;
+    const imgSrc = option.querySelector('img').src;
+    localStorage.setItem('selectedCharacter', JSON.stringify({ name, imgSrc }));
+  });
+});
+
+// Example: when drawing your own character
+document.getElementById('continueBtn').addEventListener('click', () => {
+  const name = document.getElementById('customName').value;
+  const canvas = document.getElementById('drawingCanvas');
+  const drawingData = canvas.toDataURL(); // Save the image as data URL
+
+  if (name && drawingData) {
+    localStorage.setItem('customCharacter', JSON.stringify({ name, drawingData }));
+  }
+
+  // Redirect to next page
+  window.location.href = "nextpage.html";
+});
+
+// ==character selected
+const characterOptions = document.querySelectorAll('.character-option');
+
+characterOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    // Remove 'selected' class from all other options
+    characterOptions.forEach(opt => opt.classList.remove('selected'));
+    
+    // Add 'selected' to the clicked one
+    option.classList.add('selected');
+
+    // Optional: save selection
+    const name = option.dataset.character;
+    const imgSrc = option.querySelector('img').src;
+    localStorage.setItem('selectedCharacter', JSON.stringify({ name, imgSrc }));
+  });
+});
+
+// ==
+window.addEventListener('DOMContentLoaded', () => {
+  const storedCharacter = JSON.parse(localStorage.getItem('selectedCharacter'));
+  if (storedCharacter) {
+    characterOptions.forEach(opt => {
+      if (opt.dataset.character === storedCharacter.name) {
+        opt.classList.add('selected');
+      }
+    });
+  }
+});
