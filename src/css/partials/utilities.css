@@ -64,6 +64,31 @@ label {
   animation: rainbowFlash 2s linear infinite;
 }
 
+ /* Hover effect */
+ .character-option:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  border: 4px solid rgb(255, 255, 255); /* Initial value, will be overridden by animation */
+  animation: rainbowFlash 2s linear infinite;
+}
+
+  /* Hover effect */
+  .character-option:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    border: 4px solid rgb(255, 255, 255); /* Initial value, will be overridden by animation */
+    animation: rainbow-flash 2s linear infinite;
+  }
+  
+    @keyframes rainbow-flash {
+      0%   { border-color: #f39aa8; } /* pastel pink */
+      20%  { border-color: #f5cf76; } /* pastel yellow */
+      40%  { border-color: #75e8ac; } /* pastel mint */
+      60%  { border-color: #9bcbff; } /* pastel blue */
+      80%  { border-color: #d1a5ff; } /* pastel lavender */
+      100% { border-color: #ffa0ae; } /* back to pink */
+    }
+
 /* === Button Styling (Shared) === */
 .login-container button,
 .welcome-container button,
@@ -233,3 +258,6 @@ input::placeholder {
   margin-top: 1em;
   font-style: italic;
 }
+
+
+
