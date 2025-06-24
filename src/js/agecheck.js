@@ -1,10 +1,20 @@
+// ================================
+// DOM Ready
+// ================================
 document.addEventListener("DOMContentLoaded", () => {
+
+  // ================================
+  // Element References
+  // ================================
   const nameInput = document.getElementById('name');
   const birthdayInput = document.getElementById('birthday');
   const restrictions = document.getElementById('restrictions-section');
   const descriptionBox = document.getElementById("restriction-description");
   const continueBtn = document.getElementById('continue-btn');
 
+  // ================================
+  // Descriptions for Content Options
+  // ================================
   const descriptions = {
     "adult": "Adult content includes mature themes and complex storylines intended for ages 18 and up.",
     "young-adult": "Young Adult content features themes suitable for teens, ages 13-17, including coming-of-age stories.",
@@ -13,8 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let userAge = null;
 
+  // ================================
+  // Helper Functions
+  // ================================
   function isValidDate(dateString) {
-    // Matches YYYY-MM-DD format and ensures it's a real date
     const date = new Date(dateString);
     return (
       /^\d{4}-\d{2}-\d{2}$/.test(dateString) &&
@@ -53,11 +65,26 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  // Trigger check when full date is selected and focus leaves field
+  // ================================
+  // Name Auto-Capitalization
+  // ================================
+  nameInput.addEventListener('input', () => {
+    const formatted = nameInput.value
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+    nameInput.value = formatted;
+  });
+
+  // ================================
+  // Age Check Events
+  // ================================
   birthdayInput.addEventListener("blur", checkAgeAndToggle);
   nameInput.addEventListener("blur", checkAgeAndToggle);
 
-  // Update restriction description
+  // ================================
+  // Content Radio Buttons - Description Updater
+  // ================================
   document.querySelectorAll('input[name="content"]').forEach(radio => {
     radio.addEventListener("change", (e) => {
       const selected = e.target.value;
@@ -65,22 +92,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ================================
+  // Continue Button Logic
+  // ================================
   continueBtn.addEventListener("click", () => {
     const name = nameInput.value.trim();
     const birthday = birthdayInput.value;
+    let hasError = false;
 
+   // Clear name error on input if fixed
+  nameInput.addEventListener('input', () => {
+    if (nameInput.value.trim()) {
+      nameInput.classList.remove('input-error');
+      document.getElementById('name-error').style.display = 'none';
+    }
+  });
+
+  // Clear birthday error on input if fixed
+  birthdayInput.addEventListener('input', () => {
+    if (birthdayInput.value) {
+      birthdayInput.classList.remove('input-error');
+      document.getElementById('birthday-error').style.display = 'none';
+    }
+  });
+
+    // Validate name
     if (!name) {
-      alert('Please enter your name.');
-      return;
-    }
-    if (!isValidDate(birthday)) {
-      alert('Please enter a valid birthday.');
-      return;
+      nameInput.classList.add('input-error');
+      const nameError = document.getElementById('name-error');
+      nameError.textContent = 'Please enter your name.';
+      nameError.style.display = 'block';
+      hasError = true;
     }
 
+    // Validate birthday
+    if (!isValidDate(birthday)) {
+      birthdayInput.classList.add('input-error');
+      const birthdayError = document.getElementById('birthday-error');
+      birthdayError.textContent = 'Please enter a valid birthday.';
+      birthdayError.style.display = 'block';
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    // Store Age
     userAge = calculateAge(birthday);
     localStorage.setItem('userAge', userAge);
 
+    // Store Content Restriction
     if (userAge >= 13) {
       const selected = document.querySelector('input[name="content"]:checked');
       if (!selected) {
@@ -92,14 +152,15 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("contentRestriction");
     }
 
-    // Proceed to next page
+    // Redirect to next page
     window.location.href = "nextpage.html";
   });
 });
 
+// ================================
+// Birthday Field Color Styling
+// ================================
 const birthdayInput = document.getElementById('birthday');
-
-
 
 function updateBirthdayColor() {
   if (birthdayInput.value) {
@@ -109,6 +170,6 @@ function updateBirthdayColor() {
   }
 }
 
-// Run on page load and whenever input changes
+// Run on page load and when input changes
 document.addEventListener('DOMContentLoaded', updateBirthdayColor);
 birthdayInput.addEventListener('input', updateBirthdayColor);
