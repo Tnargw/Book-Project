@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Proceed to next page
-    window.location.href = "nextpage.html";
+    window.location.href = "Playground/recommendations/bookPicker.html";
   });
 });
 

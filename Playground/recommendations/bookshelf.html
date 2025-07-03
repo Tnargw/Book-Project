@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Bookshelf</title>
+  <link rel="stylesheet" href="../../src/css/style.css" />
+  <style>
+    #bookDetails {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #bookDetails img {
+      max-height: 300px;
+      margin-bottom: 1rem;
+    }
+
+    #bookDetails h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    #progressContainer {
+      margin-top: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar-fill {
+      height: 20px;
+      background-color: #4caf50;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    #pageInput {
+      margin-top: 1rem;
+    }
+
+    #pageInput input {
+      width: 80px;
+      padding: 0.5rem;
+      margin-right: 10px;
+    }
+
+    #pageInput button {
+      padding: 0.5rem 1rem;
+    }
+
+    #readingStats {
+      margin-top: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Selected Book</h1>
+  <div id="bookDetails">Loading book info...</div>
+  <div id="readingStats"></div>
+
+  <script type="module">
+    const bookId = localStorage.getItem('currentBook');
+    const container = document.getElementById('bookDetails');
+
+    if (!bookId) {
+      container.innerHTML = '<p>No book selected.</p>';
+    } else {
+      fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}`)
+        .then(res => res.json())
+        .then(data => {
+          const info = data.volumeInfo;
+          const title = info.title;
+          const pageCount = info.pageCount || 0;
+          const pagesReadKey = `pagesRead_${bookId}`;
+          let pagesRead = parseInt(localStorage.getItem(pagesReadKey)) || 0;
+
+          if (pagesRead > pageCount) pagesRead = pageCount;
+
+          container.innerHTML = `
+            ${info.imageLinks?.thumbnail ? `<img src="${info.imageLinks.thumbnail}" alt="Cover of ${title}">` : ''}
+            <h2>${title}</h2>
+            <p>Page Count: ${pageCount}</p>
+
+            <div id="progressContainer">
+              <p>Pages Read: <span id="pagesRead">${pagesRead}</span> / ${pageCount}</p>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <div id="pageInput">
+              <input type="number" id="pagesToAdd" min="1" placeholder="Pages read">
+              <button id="addPagesBtn">Add</button>
+            </div>
+          `;
+
+          const fill = document.getElementById('progressFill');
+          const pagesReadSpan = document.getElementById('pagesRead');
+          const inputSection = document.getElementById('pageInput');
+
+          function updateProgress() {
+            const percent = pageCount > 0 ? (pagesRead / pageCount) * 100 : 0;
+            fill.style.width = `${percent}%`;
+            pagesReadSpan.textContent = pagesRead;
+          }
+
+          function updateReadingStats() {
+            const statsDiv = document.getElementById('readingStats');
+            const finishedBooks = JSON.parse(localStorage.getItem('finishedBooks')) || [];
+            const totalBooks = finishedBooks.length;
+            const totalPages = finishedBooks.reduce((sum, book) => sum + book.pageCount, 0);
+
+            statsDiv.innerHTML = `
+              <h3>Reading Stats</h3>
+              <p>Total Books Finished: <strong>${totalBooks}</strong></p>
+              <p>Total Pages Read: <strong>${totalPages}</strong></p>
+            `;
+          }
+
+          updateProgress();
+          updateReadingStats();
+
+          // If already finished, show "Pick a New Book!" button immediately
+          if (pagesRead === pageCount) {
+            inputSection.innerHTML = `
+              <a href="bookPicker.html">
+                <button style="padding: 0.75rem 1.5rem; margin-top: 1rem;">Pick a New Book!</button>
+              </a>
+            `;
+          } else {
+            // Only attach input handler if book is not already finished
+            document.getElementById('addPagesBtn').addEventListener('click', () => {
+              const input = document.getElementById('pagesToAdd');
+              const addPages = parseInt(input.value);
+              if (!isNaN(addPages) && addPages > 0) {
+                pagesRead += addPages;
+                if (pagesRead > pageCount) pagesRead = pageCount;
+
+                localStorage.setItem(pagesReadKey, pagesRead);
+                updateProgress();
+                input.value = '';
+
+                if (pagesRead === pageCount) {
+                  const finishedBooks = JSON.parse(localStorage.getItem('finishedBooks')) || [];
+                  const alreadyFinished = finishedBooks.some(book => book.id === bookId);
+                  if (!alreadyFinished) {
+                    finishedBooks.push({ id: bookId, title, pageCount });
+                    localStorage.setItem('finishedBooks', JSON.stringify(finishedBooks));
+                    console.log(`Book "${title}" marked as finished.`);
+                  }
+
+                  updateReadingStats();
+
+                  // Replace input with button
+                  inputSection.innerHTML = `
+                    <a href="bookPicker.html">
+                      <button style="padding: 0.75rem 1.5rem; margin-top: 1rem;">Pick a New Book!</button>
+                    </a>
+                  `;
+                }
+              }
+            });
+          }
+        })
+        .catch(err => {
+          console.error('Error fetching book details:', err);
+          container.innerHTML = '<p>Failed to load book details. Try again later.</p>';
+        });
+    }
+  </script>
+
+</body>
+</html>

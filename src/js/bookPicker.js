@@ -89,7 +89,7 @@ function loadCategory(genre) {
     });
 }
 
-function submitQuiz() {
+function submitBooks() {
     const selectedBooks = Array.from(document.querySelectorAll('.book-card.selected'))
                                .map(card => card.dataset.title);
                                
@@ -104,4 +104,4 @@ function getSelectedBooks() {
 }
 
 
-export { chooseAge, submitQuiz, getSelectedBooks };
+export { chooseAge, submitBooks, getSelectedBooks };

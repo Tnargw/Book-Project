@@ -1,4 +1,4 @@
-import { detectAgeGroup } from './utils.js';
+import { detectAgeGroup } from './utils.mjs';
 
 export async function searchBook(title) {
   const res = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&limit=10&fields=key,author_name,title`);

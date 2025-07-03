@@ -12,7 +12,7 @@
     <div id="categories"></div>
     <div id="books"></div>
 
-    <button id="submitQuizButton">Submit</button>
+    <button id="submitButton">Submit</button>
     <button id="searchButton">Search</button>
 
     <div id="results"></div>
@@ -22,7 +22,7 @@
 
     <!-- This script wires everything together -->
     <script type="module">
-        import { chooseAge, submitQuiz, getSelectedBooks } from '../../src/js/bookPicker.js';
+        import { chooseAge, submitBooks, getSelectedBooks } from '../../src/js/bookPicker.js';
 
         // Immediately run chooseAge on page load
         window.addEventListener("DOMContentLoaded", () => {
@@ -31,14 +31,14 @@
 
             if (!age || !restriction) {
                 alert("Missing age or content restriction. Please go back and select those first.");
-                window.location.href = "index.html"; // or wherever your setup page is
+                window.location.href = "index.html";
                 return;
             }
 
             chooseAge();
         });
 
-        document.getElementById("submitQuizButton").addEventListener("click", submitQuiz);
+        document.getElementById("submitButton").addEventListener("click", submitBooks);
 
         document.getElementById("searchButton").addEventListener("click", () => {
             const titles = getSelectedBooks();
