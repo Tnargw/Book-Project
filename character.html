@@ -6,7 +6,7 @@
   <title>Choose Your Character</title>
   <link rel="stylesheet" href="src/css/style.css" />
   <script src="src/js/background.js" defer></script>
-  <script src="src/js/main.js" defer></script>
+  <script type="module" src="../src/js/character.js" defer></script>
 </head>
 <body>
   <canvas id="backgroundCanvas"></canvas>
@@ -63,10 +63,13 @@
 
     <!-- RIGHT: Custom Character Drawing -->
     <section class="custom-character">
+
       <h2>Or Draw Your Own</h2>
-      <canvas id="drawingCanvas" width="400" height="400"></canvas>
+      <canvas class="rainbow-pixel-canvas" width="450" height="450"></canvas>
       <label for="customName">Character Name:</label>
       <input type="text" id="customName" placeholder="Enter a name..." />
+      <button id="clearBtn">Clear</button>
+
     </section>
     
   </main>

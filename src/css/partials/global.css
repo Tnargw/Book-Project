@@ -25,58 +25,157 @@ body {
   }
   
   
-
+  /* ============================================ */
   /* ===== Temp location for: Character css ===== */
-  .character-select-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  
-  .premade-characters {
-    width: 28%;
-  }
-  .custom-character {
-    width: 48%;
-  }
- 
-  .character-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-  
-  .character-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .character-option img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
- 
+  /* ============================================ */
+/* === Base Styles === */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 
-  
-  /* Selected effect (stays after click) */
-  /* .character-option.selected img {
-    transform: scale(2.1);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-    outline: 2px solid white;
-  } */
-  
-  .continue-button-wrapper {
-    display: flex;
-    justify-content: center;
-    /* margin: 2rem 0; */
-  }
+/* === Character Select Layout === */
+.character-select-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 250px);
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
 
+/* Ensure children inside the container are clickable */
+.character-select-container * {
+  pointer-events: auto;
+}
 
- 
-  
+.premade-characters,
+.custom-character {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Character Grid & Options === */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 70%;
+}
+
+.character-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.character-option img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-name {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #000000;
+}
+
+/* === Canvas Drawing Area === */
+.rainbow-pixel-canvas {
+  border: 2px solid black;
+  touch-action: none;
+  margin-bottom: 1rem;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* === Continue Button === */
+.continue-button-wrapper {
+  position: fixed;
+  bottom: 13%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.continue-button-wrapper button {
+  pointer-events: auto;
+}
+
+#continueBtn {
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* === Clear Button === */
+#clearBtn {
+  border: var(--color5);
+  background-color: var(--color2);
+  font-size: 0.8rem;
+  padding: 0.6rem 1rem;
+  color: var(--color1);
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: 0.15rem;
+  border-radius: 999px;
+  margin-top: 1rem;
+}
+
+#clearBtn:hover {
+  border: 1px solid var(--color2);
+  background-color: var(--color5);
+  color: var(--color2);
+}
+
+/* === Optional Background Canvas Layer === */
+/*
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: auto;
+}
+*/
+
+/* === Non-interactive Layers === */
+footer,
+#main-header {
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* Allow interaction to pass through */
+}
+
+/* === Re-enable interaction where needed === */
+footer button,
+.nav-links a,
+.sketchpad-btn {
+  pointer-events: auto;
+}
+
+.rainbow-pixel-canvas {
+  pointer-events: auto;
+}
+
+.rainbow-pixel-canvas {
+  z-index: 9999;
+}
+
