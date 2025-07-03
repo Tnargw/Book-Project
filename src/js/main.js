@@ -1,5 +1,5 @@
 import { searchBook } from './search.js';
-import { prioritizedGenres } from './config.js';
+import { prioritizedGenres } from './config.mjs';
 
 // NEW: multi-book recommendation function
 export async function handleBookSearch(titles, customRenderer = null) {

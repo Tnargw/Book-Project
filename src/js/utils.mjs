@@ -1,4 +1,4 @@
-import { ageGroups, ageGroupIndicators } from './config.js';
+import { ageGroups, ageGroupIndicators } from './config.mjs';
 
 export function detectAgeGroup(subjects = []) {
   const lowerSubjects = subjects.map(s => s.toLowerCase().trim());

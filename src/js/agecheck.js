@@ -152,8 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("contentRestriction");
     }
 
-    // Redirect to next page
-    window.location.href = "nextpage.html";
+    // Proceed to next page
+    window.location.href = "Playground/recommendations/bookPicker.html";
   });
 });
 
