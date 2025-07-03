@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Bookshelf - STORYIUM</title>
+
+  <link rel="stylesheet" href="src/css/partials/finishedBooks.css" />
+  <link rel="stylesheet" href="src/css/style.css" />
+
+  <script src="src/js/background.js" defer></script>
+  <script src="src/js/finishedBooks.js" defer></script>
+</head>
+<body>
+  <canvas id="backgroundCanvas"></canvas>
+
+  <header id="main-header">
+    <div class="logo">
+      <a href="login.html">STORYIUM</a>
+    </div>
+    <nav class="nav-links">
+      <a href="login.html">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LIBRARY</a>
+    </nav>
+    <button class="sketchpad-btn">SKETCHPAD</button>
+  </header>
+
+  <main class="book-container">
+    <section class="book-list-section">
+      <h1>Your Finished Books</h1>
+      <div id="book-list" class="book-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <button>Help</button>
+    <button>Contact</button>
+    <button>Media</button>
+  </footer>
+
+  <!-- Modal -->
+  <div id="bookModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+</body>
+</html>

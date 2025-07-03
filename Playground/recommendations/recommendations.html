@@ -168,10 +168,21 @@
     `;
 
                     card.addEventListener('click', () => {
+                        // Remove selection from any previously selected cards
+                        document.querySelectorAll('.book-card.selected').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+
+                        // Add selection to the clicked card
+                        card.classList.add('selected');
+
+                        // Save this book ID
                         localStorage.setItem('currentBook', rec.id);
                         console.log(`Saved currentBook: ${rec.id}`);
+
                         continueBtn.style.display = 'block'; // Show the continue button
                     });
+
 
                     booksDiv.appendChild(card);
                 }
