@@ -152,7 +152,7 @@ footer button,
 /* === Toggle Switch === */
 .toggle-switch {
   position: fixed;                /* Use fixed or absolute depending on your need */
-  top: 80%;                       /* Adjust this value as needed */
+  top: 78%;                       /* Adjust this value as needed */
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

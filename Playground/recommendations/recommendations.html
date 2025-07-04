@@ -4,18 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Book Recommendations</title>
-    <link rel="stylesheet" href="../../src/css/style.css" />
-</head>
+    <link rel="stylesheet" href="/src/css/partials/bookPicker.css" />
+    <link rel="stylesheet" href="/src/css/style.css" /></head>
 
-<body>
-
+<body class="book-choice-page">
+    <header id="main-header">
+        <div class="logo">STORYIUM</div>
+        <nav class="nav-links">
+          <a href="/login.html">HOME</a>
+          <a href="#">ABOUT</a>
+          <a href="#">LIBRARY</a>
+        </nav>
+        <button class="sketchpad-btn">SKETCHPAD</button>
+      </header>
     <h1>Recommended Books</h1>
 
     <div id="selectedBooks"></div>
     <div id="recommendations"></div>
-    <button id="continueBtn" style="display: none; margin-top: 20px;">Continue</button>
-
-
+    <div id="continueBtn-container">
+        <button id="continueBtn" style="display:none;">CONTINUE</button>
+    </div>
+      
+    <footer>
+        <button>Help</button>
+        <button>Contact</button>
+        <button>Media</button>
+      </footer>
+      
     <script type="module">
         (async function () {
             const stored = localStorage.getItem('selectedBooks');
@@ -189,7 +204,7 @@
 
                 // Set up the "Continue" button to navigate to the next page
                 continueBtn.addEventListener('click', () => {
-                    window.location.href = 'bookshelf.html'; // Change to your next page
+                    window.location.href = '/character.html'; // Change to your next page
                 });
 
 

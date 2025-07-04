@@ -11,6 +11,20 @@ footer {
   font-size: 0.9rem; /* Add this to control footer text size */
 }
 
+
+
+.book-picker-page footer {
+  position: static; /* or just remove absolute */
+  width: 100%;
+  background-color: var(--color2, #000);
+  color: var(--color1, #fff);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
 footer button {
   background: none;
   border: none;

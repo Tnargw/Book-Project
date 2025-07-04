@@ -168,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const imageDataURL = canvas.toDataURL("image/png");
       const characterData = { name, image: imageDataURL };
       localStorage.setItem("customCharacter", JSON.stringify(characterData));
-      alert("Custom character saved!");
+
+      // Navigate after saving custom character
+      window.location.href = "Playground/recommendations/bookshelf.html"; // <-- Change to your destination page
     }
 
     if (selectedMode === "premade") {
@@ -189,7 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
         image: imageDataURL
       };
       localStorage.setItem("customCharacter", JSON.stringify(characterData));
-      alert(`Premade character "${selectedPremade.name}" saved!`);
+
+      // Navigate after saving premade character
+      window.location.href = "Playground/recommendations/bookshelf.html"; // <-- Change to your destination page
     }
   });
 
