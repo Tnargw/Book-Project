@@ -1,4 +1,4 @@
-        /* body {
+        body {
             font-family: Arial, sans-serif;
             text-align: center;
             background: #f9f9f9;
@@ -41,13 +41,15 @@
         .book-card:hover .book-title {
             opacity: 1;
         }
+        
         .selected {
             border: 3px solid #4CAF50;
             box-shadow: 0 0 15px rgba(0,128,0,0.5);
         }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-        } */
+        }
