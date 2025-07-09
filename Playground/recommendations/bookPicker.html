@@ -1,54 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Book Recommender</title>
-    <link rel="stylesheet" href="../../src/css/style.css" />
+  <meta charset="UTF-8">
+  <title>Book Recommender</title>
+  <link rel="stylesheet" href="/src/css/partials/bookPicker.css" />
+  <link rel="stylesheet" href="/src/css/style.css" />
+  
 </head>
-<body>
 
-    <h1>Book Picker</h1>
+<body class="book-picker-page">
+  <div class="page-wrapper">
+    <header id="main-header">
+      <div class="logo">STORYIUM</div>
+      <nav class="nav-links">
+        <a href="/login.html">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="#">LIBRARY</a>
+      </nav>
+      <button class="sketchpad-btn">SKETCHPAD</button>
+    </header>
 
-    <div id="categories"></div>
-    <div id="books"></div>
+    <main>
+      <h1>SELECT THE BOOKS YOU HAVE READ</h1>
+      <div id="categories"></div>
+      <div id="books"></div>
+      <div id="results"></div>
+    </main>
+  </div>
 
-    <button id="submitButton">Submit</button>
-    <button id="searchButton">Search</button>
+    <!-- <button id="submitButton">Submit</button> -->
+    <!-- <button id="searchButton">Search</button> -->
 
-    <div id="results"></div>
+  <!-- Floating search button -->
+  <div id="searchContainer">
+    <button id="searchButton">NEXT</button>
+  </div>
 
-    <!-- Load your data -->
-    <script src="data.js"></script>
+  <footer>
+    <button>Help</button>
+    <button>Contact</button>
+    <button>Media</button>
+  </footer>
 
-    <!-- This script wires everything together -->
-    <script type="module">
-        import { chooseAge, submitBooks, getSelectedBooks } from '../../src/js/bookPicker.js';
+  <script src="data.js"></script>
+  <script type="module">
+    import { chooseAge, submitBooks, getSelectedBooks } from '../../src/js/bookPicker.js';
 
-        // Immediately run chooseAge on page load
-        window.addEventListener("DOMContentLoaded", () => {
-            const age = localStorage.getItem('userAge');
-            const restriction = localStorage.getItem('contentRestriction');
+    window.addEventListener("DOMContentLoaded", () => {
+      const age = localStorage.getItem('userAge');
+      const restriction = localStorage.getItem('contentRestriction');
 
-            if (!age || !restriction) {
-                alert("Missing age or content restriction. Please go back and select those first.");
-                window.location.href = "index.html";
-                return;
-            }
+      if (!age || !restriction) {
+        alert("Missing age or content restriction. Please go back and select those first.");
+        window.location.href = "index.html";
+        return;
+      }
 
-            chooseAge();
+      chooseAge();
+
+      document.getElementById("searchButton").addEventListener("click", () => {
+        const titles = getSelectedBooks();
+        if (titles.length === 0) {
+          alert('Please select at least one book.');
+          return;
+        }
+        localStorage.setItem('selectedBooks', JSON.stringify(titles));
+        window.location.href = 'recommendations.html';
+      });
+
+      // Only allow one clicked button at a time
+      document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('button.clicked').forEach(btn => btn.classList.remove('clicked'));
+          button.classList.add('clicked');
         });
-
-        document.getElementById("submitButton").addEventListener("click", submitBooks);
-
-        document.getElementById("searchButton").addEventListener("click", () => {
-            const titles = getSelectedBooks();
-            if (titles.length === 0) {
-                alert('Please select at least one book.');
-                return;
-            }
-            localStorage.setItem('selectedBooks', JSON.stringify(titles));
-            window.location.href = 'recommendations.html';
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
