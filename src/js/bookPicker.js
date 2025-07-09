@@ -59,6 +59,8 @@ function chooseAge() {
 
 
 function loadCategory(genre) {
+    localStorage.setItem("currentGenre", genre);
+    console.log("Loading genre:", genre);
     const books = filledBooks[selectedAudience][genre];
     const container = document.getElementById("books");
     container.innerHTML = "";

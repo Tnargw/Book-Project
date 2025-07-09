@@ -180,6 +180,10 @@
                         localStorage.setItem('currentBook', rec.id);
                         console.log(`Saved currentBook: ${rec.id}`);
 
+                        const currentGenre = localStorage.getItem('currentGenre') || 'Unknown';
+                        localStorage.setItem(`genre_${rec.id}`, currentGenre);
+                        console.log(`Saved genre_${rec.id}: ${currentGenre}`);
+
                         continueBtn.style.display = 'block'; // Show the continue button
                     });
 

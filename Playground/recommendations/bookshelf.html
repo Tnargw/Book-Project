@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Your Bookshelf</title>
+  <link rel="stylesheet" href="../../src/css/partials/bookshelf.css" />
   <link rel="stylesheet" href="../../src/css/style.css" />
   <style>
     #bookDetails {
@@ -12,7 +14,7 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     #bookDetails img {
@@ -61,13 +63,19 @@
       margin-top: 2rem;
       text-align: center;
     }
+    
   </style>
 </head>
+
 <body>
 
+  <div id="sidebarStats"></div>
+
+  <div id="mainContent">
   <h1>Your Selected Book</h1>
   <div id="bookDetails">Loading book info...</div>
   <div id="readingStats"></div>
+</div>
 
   <script type="module">
     const bookId = localStorage.getItem('currentBook');
@@ -116,17 +124,50 @@
           }
 
           function updateReadingStats() {
-            const statsDiv = document.getElementById('readingStats');
             const finishedBooks = JSON.parse(localStorage.getItem('finishedBooks')) || [];
             const totalBooks = finishedBooks.length;
             const totalPages = finishedBooks.reduce((sum, book) => sum + book.pageCount, 0);
 
+            // --- Compute genre breakdown ---
+            const genreCounts = {};
+            finishedBooks.forEach(book => {
+              const genre = book.genre || 'Unknown';
+              if (genreCounts[genre]) {
+                genreCounts[genre]++;
+              } else {
+                genreCounts[genre] = 1;
+              }
+            });
+
+
+            // Compute percentages
+            const genrePercentages = {};
+            for (const [genre, count] of Object.entries(genreCounts)) {
+              genrePercentages[genre] = (count / totalBooks) * 100;
+            }
+
+            // Build sidebar HTML
+            const sidebar = document.getElementById('sidebarStats');
+            sidebar.innerHTML = `
+    <h3>My Reading Stats</h3>
+    <p><strong>Total Books:</strong> ${totalBooks}</p>
+    <p><strong>Total Pages:</strong> ${totalPages}</p>
+    <h4>Genres:</h4>
+    ${Object.entries(genrePercentages).map(([genre, pct]) => `
+      <p>${genre}: ${pct.toFixed(1)}%</p>
+      <div class="genre-bar" style="width:${pct}%;"></div>
+    `).join('')}
+  `;
+
+            // Keep the old stats section for mobile or full view
+            const statsDiv = document.getElementById('readingStats');
             statsDiv.innerHTML = `
-              <h3>Reading Stats</h3>
-              <p>Total Books Finished: <strong>${totalBooks}</strong></p>
-              <p>Total Pages Read: <strong>${totalPages}</strong></p>
-            `;
+    <h3>Reading Stats</h3>
+    <p>Total Books Finished: <strong>${totalBooks}</strong></p>
+    <p>Total Pages Read: <strong>${totalPages}</strong></p>
+  `;
           }
+
 
           updateProgress();
           updateReadingStats();
@@ -155,10 +196,13 @@
                   const finishedBooks = JSON.parse(localStorage.getItem('finishedBooks')) || [];
                   const alreadyFinished = finishedBooks.some(book => book.id === bookId);
                   if (!alreadyFinished) {
-                    finishedBooks.push({ id: bookId, title, pageCount });
+                    const genre = localStorage.getItem('currentGenre');
+                    console.log(`Marking book as finished: ${title}, Genre: ${genre}`);
+                    finishedBooks.push({ id: bookId, title, pageCount, genre });
                     localStorage.setItem('finishedBooks', JSON.stringify(finishedBooks));
                     console.log(`Book "${title}" marked as finished.`);
                   }
+
 
                   updateReadingStats();
 
@@ -181,4 +225,5 @@
   </script>
 
 </body>
+
 </html>
