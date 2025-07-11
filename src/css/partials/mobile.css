@@ -1,4 +1,5 @@
 /* === HEADER BASE STYLES === */
+@media (max-width: 768px) {
 header {
   display: flex;
   justify-content: space-between;
@@ -123,7 +124,7 @@ header.scrolled {
 
 
 /* === HEADER RESPONSIVE (HAMBURGER NAVIGATION) === */
-@media (max-width: 768px) {
+
   header {
     flex-wrap: wrap;
     justify-content: space-between;
