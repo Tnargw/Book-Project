@@ -93,8 +93,11 @@
       
 
       :root {
-        --color1: #222;  /* background for menu */
-        --color2: #fff;  /* text color */
+        --color1: #ffffff;
+        --color2: #000000;
+        --color3: #868686;
+        --color4: #c8c8c8;
+        --color5: #ffffff00;
       }
   
       /* === HEADER BASE STYLES === */
@@ -221,6 +224,28 @@
       
       .hamburger {
         z-index: 30001;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;     /* start fully off-screen to the right */
+        width: 70%;       /* width of slide-out */
+        height: 30vh;    /* full viewport height */
+        background-color: var(--color1);
+        color: var(--color2);
+        padding-top: 4rem;
+        transition: right 0.3s ease;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 10rem;
+      }
+      
+      .nav-links.open {
+        right: 0;         /* slide fully in */
       }
       
   }
