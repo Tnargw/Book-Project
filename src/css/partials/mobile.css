@@ -176,27 +176,23 @@ header.scrolled {
 /* === MOBILE STYLES FOR NEW ADVENTURER PAGE === */
 
 
-  /* Main container adjustments */
-  .welcome-container {
-    padding: .2rem;
-    /* margin-top: -20px; */
-    max-width: 100%;
-    /* margin-top: 0px;  */
 
-    }
+
+
+    
 
   /* Section welcome */
   .welcome {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: .5rem;
   }
 
   /* Headings */
   .welcome h1 {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     color: var(--color2);
   }
 
@@ -204,7 +200,7 @@ header.scrolled {
   form#adventure-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .6rem;
   }
 
   .form-group {
@@ -267,15 +263,15 @@ header.scrolled {
 
   /* Description box */
   #restriction-description {
-    margin-top: 0.75rem;
+    /* margin-bottom: 0.1rem; */
     font-size: 0.9rem;
-    color: var(--color2);
+    color: var(--color3);
     min-height: 3rem;
   }
 
   /* Continue button */
   #continue-btn {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
     background-color: var(--color2);
     color: var(--color1);
     font-weight: 700;
@@ -339,6 +335,94 @@ footer {
   color: var(--color1, #fff);
   font-size: 0.9rem;
   z-index: 1000;
+}
+
+
+
+
+
+
+ .welcome-container {
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 320px;              /* same fixed width as normal */
+  max-width: 90vw;           /* responsive max width */
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 320px;              /* same fixed width as normal */
+  max-width: 90vw;           /* responsive max width */
+}
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 320px;              /* same fixed width as normal */
+  max-width: 90vw;           /* responsive max width */
+}
+
+.welcome-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 320px;              /* same fixed width as normal */
+  max-width: 90vw;           /* responsive max width */
+}
+
+
+#restrictions-section {
+  display: none;
+}
+.login-container.expanded, 
+.welcome-container.expanded {
+  position: relative;        /* allow scroll, but stay in flow */
+  top: auto;                 /* reset top */
+  left: 49%;                 /* keep horizontal center */
+  transform: translateX(-50%); /* center horizontally */
+  pointer-events: auto;
+  width: 320px;              /* same fixed width as normal */
+  max-width: 90vw;           /* responsive max width */
+  padding-bottom: 5rem;      /* space for footer */
+  margin-top: 2rem;          /* vertical margin to push down a bit */
+}
+
+
+#continue-btn.expanded {
+  margin-top: 0rem;
+  margin-top: -.5rem ;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
+    /* animation: rainbowFlash 5s linear infinite; */
+
+}
+
+@keyframes rainbowFlash {
+  0%   { color: #f39aa8; } /* pastel pink */
+  20%  { color: #f5cf76; } /* pastel yellow */
+  40%  { color: #75e8ac; } /* pastel mint */
+  60%  { color: #9bcbff; } /* pastel blue */
+  80%  { color: #d1a5ff; } /* pastel lavender */
+  100% { color: #ffa0ae; } /* back to pink */
 }
 
 
