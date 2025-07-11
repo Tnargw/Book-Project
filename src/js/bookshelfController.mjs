@@ -12,35 +12,96 @@ if (!bookId) {
       const pageCount = info.pageCount || 0;
       const pagesReadKey = `pagesRead_${bookId}`;
       let pagesRead = parseInt(localStorage.getItem(pagesReadKey)) || 0;
-
       if (pagesRead > pageCount) pagesRead = pageCount;
 
       container.innerHTML = `
-        ${info.imageLinks?.thumbnail ? `<img src="${info.imageLinks.thumbnail}" alt="Cover of ${title}">` : ''}
-        <h2>${title}</h2>
-        <p>Page Count: ${pageCount}</p>
-
-        <div id="progressContainer">
-          <p>Pages Read: <span id="pagesRead">${pagesRead}</span> / ${pageCount}</p>
-          <div class="progress-bar">
-            <div class="progress-bar-fill" id="progressFill"></div>
-          </div>
+  <div class="book-info-wrapper">
+    ${info.imageLinks?.thumbnail ? `<img class="book-image" src="${info.imageLinks.thumbnail}" alt="Cover of ${title}">` : ''}
+    
+    <div class="book-details">
+      <h2>${title}</h2>
+      <p>Page Count: ${pageCount}</p>
+      <div id="progressContainer" class="progress-container">
+        <p>Pages Read: <span id="pagesRead">${pagesRead}</span> / ${pageCount}</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progressFill"></div>
+          <img id="progressCharacter" src="" alt="Character" />
         </div>
+      </div>
+      <div id="pageInput">
+        <input type="number" id="pagesToAdd" min="1" placeholder="Pages read">
+        <button id="addPagesBtn">Add</button>
+      </div>
+    </div>
+  </div>
+`;
 
-        <div id="pageInput">
-          <input type="number" id="pagesToAdd" min="1" placeholder="Pages read">
-          <button id="addPagesBtn">Add</button>
-        </div>
-      `;
 
-      const fill = document.getElementById('progressFill');
+      // Load character from localStorage into progress bar and sidebar
+      const charData = JSON.parse(localStorage.getItem("customCharacter"));
+      const progressCharacter = document.getElementById("progressCharacter");
+      if (charData && charData.image) {
+        progressCharacter.src = charData.image;
+        progressCharacter.alt = charData.name || "Character";
+
+        // ALSO update the sidebar character display
+        const sidebarCharacter = document.getElementById("characterImage");
+        const characterName = document.getElementById("characterName");
+
+        if (sidebarCharacter) {
+          sidebarCharacter.src = charData.image;
+          sidebarCharacter.alt = charData.name || "Character";
+        }
+        if (characterName) {
+          characterName.textContent = charData.name || "";
+        }
+      }
+
       const pagesReadSpan = document.getElementById('pagesRead');
-      const inputSection = document.getElementById('pageInput');
+      const progressBarContainer = document.querySelector('.progress-bar');
+      const fill = document.getElementById('progressFill');
+
+      function animateProgressBarFill(targetPercent, duration = 3000) {
+        const startWidth = parseFloat(fill.style.width) || 0;
+        const startTime = performance.now();
+
+        function animate(time) {
+          const elapsed = time - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          const currentWidth = startWidth + (targetPercent * 100 - startWidth) * easedProgress;
+          fill.style.width = `${currentWidth}%`;
+
+          const containerWidth = progressBarContainer.offsetWidth;
+          const characterWidth = progressCharacter.offsetWidth || 40;
+          let leftPos = (currentWidth / 100) * containerWidth - characterWidth / 2;
+          leftPos = Math.min(Math.max(leftPos, 0), containerWidth - characterWidth);
+          progressCharacter.style.left = `${leftPos}px`;
+
+          if (progress < 1) {
+            progressCharacter.style.animation = 'wobbleWalk 0.4s infinite';
+            requestAnimationFrame(animate);
+          } else {
+            progressCharacter.style.animation = 'bounceIdle 1.5s infinite ease-in-out';
+          }
+        }
+        requestAnimationFrame(animate);
+      }
 
       function updateProgress() {
-        const percent = pageCount > 0 ? (pagesRead / pageCount) * 100 : 0;
-        fill.style.width = `${percent}%`;
+        let pagesRead = parseInt(localStorage.getItem(pagesReadKey)) || 0;
+        if (pagesRead > pageCount) pagesRead = pageCount;
+
         pagesReadSpan.textContent = pagesRead;
+
+        const targetPercent = pageCount > 0 ? Math.pow(pagesRead / pageCount, 0.7) : 0;
+        animateProgressBarFill(targetPercent);
+
+        if (pagesRead === 0) {
+          fill.style.width = '0%';
+          progressCharacter.style.left = '0px';
+          progressCharacter.style.animation = 'bounceIdle 1.5s infinite ease-in-out';
+        }
       }
 
       function updateReadingStats() {
@@ -51,11 +112,7 @@ if (!bookId) {
         const genreCounts = {};
         finishedBooks.forEach(book => {
           const genre = book.genre || 'Unknown';
-          if (genreCounts[genre]) {
-            genreCounts[genre]++;
-          } else {
-            genreCounts[genre] = 1;
-          }
+          genreCounts[genre] = (genreCounts[genre] || 0) + 1;
         });
 
         const genrePercentages = {};
@@ -63,29 +120,33 @@ if (!bookId) {
           genrePercentages[genre] = (count / totalBooks) * 100;
         }
 
-        const sidebar = document.getElementById('sidebarStats');
-        sidebar.innerHTML = `
-          <h3>My Reading Stats</h3>
-          <p><strong>Total Books:</strong> ${totalBooks}</p>
-          <p><strong>Total Pages:</strong> ${totalPages}</p>
-          <h4>Genres:</h4>
-          ${Object.entries(genrePercentages).map(([genre, pct]) => `
-            <p>${genre}: ${pct.toFixed(1)}%</p>
-            <div class="genre-bar" style="width:${pct}%;"></div>
-          `).join('')}
-        `;
+        const statsInfo = document.getElementById('statsInfo');
+        if (statsInfo) {
+          statsInfo.innerHTML = `
+            <h3>My Reading Stats</h3>
+            <p><strong>Total Books:</strong> ${totalBooks}</p>
+            <p><strong>Total Pages:</strong> ${totalPages}</p>
+            <h4>Genres:</h4>
+            ${Object.entries(genrePercentages).map(([genre, pct]) => `
+              <p>${genre}: ${pct.toFixed(1)}%</p>
+              <div class="genre-bar" style="width:${pct}%; "></div>
+            `).join('')}
+          `;
+        }
 
-        const statsDiv = document.getElementById('readingStats');
-        statsDiv.innerHTML = `
-          <h3>Reading Stats</h3>
-          <p>Total Books Finished: <strong>${totalBooks}</strong></p>
-          <p>Total Pages Read: <strong>${totalPages}</strong></p>
-        `;
+        const summaryStats = document.getElementById('summaryStats');
+        if (summaryStats) {
+          summaryStats.innerHTML = `
+            <p><strong>Total Books Finished:</strong> ${totalBooks}</p>
+            <p><strong>Total Pages Read:</strong> ${totalPages}</p>
+          `;
+        }
       }
 
       updateProgress();
       updateReadingStats();
 
+      const inputSection = document.getElementById('pageInput');
       if (pagesRead === pageCount) {
         inputSection.innerHTML = `
           <a href="bookPicker.html">
@@ -109,10 +170,8 @@ if (!bookId) {
               const alreadyFinished = finishedBooks.some(book => book.id === bookId);
               if (!alreadyFinished) {
                 const genre = localStorage.getItem('currentGenre');
-                console.log(`Marking book as finished: ${title}, Genre: ${genre}`);
                 finishedBooks.push({ id: bookId, title, pageCount, genre });
                 localStorage.setItem('finishedBooks', JSON.stringify(finishedBooks));
-                console.log(`Book "${title}" marked as finished.`);
               }
 
               updateReadingStats();
@@ -132,3 +191,20 @@ if (!bookId) {
       container.innerHTML = '<p>Failed to load book details. Try again later.</p>';
     });
 }
+
+// CSS Animations
+const styleEl = document.createElement('style');
+styleEl.textContent = `
+@keyframes wobbleWalk {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+@keyframes bounceIdle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+`;
+document.head.appendChild(styleEl);

@@ -6,22 +6,43 @@
   <title>Your Bookshelf</title>
   <link rel="stylesheet" href="../../src/css/partials/bookshelf.css" />
   <link rel="stylesheet" href="../../src/css/style.css" />
-  
   <script type="module" src="../../src/js/bookshelfController.mjs"></script>
 </head>
 
 <body>
+  <header id="main-header">
+    <div class="logo">STORYIUM</div>
+    <nav class="nav-links">
+      <a href="/login.html">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LIBRARY</a>
+    </nav>
+    <button class="sketchpad-btn">SKETCHPAD</button>
+  </header>
 
-  <div id="sidebarStats"></div>
+  <div class="container">
+    <aside id="sidebarStats">
+      <div id="characterDisplay" class="character-display">
+        <img id="characterImage" src="" alt="Your Character" />
+        <p id="characterName"></p>
+      </div>
+      
+      <div id="statsInfo"></div>
+    </aside>
 
-  <div id="mainContent">
-  <h1>Your Selected Book</h1>
-  <div id="bookDetails">Loading book info...</div>
-  <div id="readingStats"></div>
-</div>
+    <main id="mainContent">
+      <h1>Your Selected Book</h1>
+      <div id="summaryStats"></div>
+      <div id="bookDetails">Loading book info...</div>
+      <div id="readingStats"></div>
+    </main>
+  </div>
 
-
-
+  <footer>
+    <button>Help</button>
+    <button>Contact</button>
+    <button>Media</button>
+  </footer>
 </body>
 
 </html>

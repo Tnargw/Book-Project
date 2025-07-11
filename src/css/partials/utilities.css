@@ -279,3 +279,31 @@ input::placeholder {
   50% { transform: translateX(4px); }
   75% { transform: translateX(-4px); }
 }
+
+
+
+/* ======= MOBILE ======= */
+
+/* @media (max-width: 768px) {
+  .book-top-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .book-image {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+  }
+
+  .book-details {
+    align-items: center;
+  }
+
+  #genresSection {
+    margin-top: 1.5rem;
+  }
+} */

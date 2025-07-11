@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("customCharacter", JSON.stringify(characterData));
 
       // Navigate after saving custom character
-      window.location.href = "Playground/recommendations/bookshelf.html"; // <-- Change to your destination page
+      window.location.href = "Playground/recommendations/bookPicker.html"; // <-- Change to your destination page
     }
 
     if (selectedMode === "premade") {
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("customCharacter", JSON.stringify(characterData));
 
       // Navigate after saving premade character
-      window.location.href = "Playground/recommendations/bookshelf.html"; // <-- Change to your destination page
+      window.location.href = "Playground/recommendations/bookPicker.html"; // <-- Change to your destination page
     }
   });
 

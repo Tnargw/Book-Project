@@ -166,7 +166,7 @@
     }
 
     continueBtn.addEventListener('click', () => {
-      window.location.href = '/character.html';
+      window.location.href = '../recommendations/bookshelf.html';
     });
 
     console.log("Final recommendations:", Array.from(recResults.values()));
