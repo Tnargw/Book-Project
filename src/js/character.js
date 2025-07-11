@@ -246,3 +246,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', (e) => {
+    navLinks.classList.toggle('open');
+    e.stopPropagation();
+  });
+
+  // Close menu when clicking anywhere else on the page
+  document.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});

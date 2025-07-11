@@ -64,8 +64,10 @@ html, body {
   touch-action: none;
   margin-bottom: 1rem;
   position: relative;
-  z-index: 9999;
+  z-index: 2;
   pointer-events: auto !important;
+  position: relative; /* needed? */
+  z-index: auto; /* or remove z-index */
 }
 
 /* === Continue Button === */
@@ -74,9 +76,10 @@ html, body {
   bottom: 13%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 1;
   display: flex;
   justify-content: center;
+  
 }
 
 #continueBtn {
@@ -121,7 +124,7 @@ footer,
 #main-header {
   position: relative;
   z-index: 1;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 /* === Restore Pointer Events Where Needed === */
@@ -190,4 +193,12 @@ footer button,
   gap: 1rem;
   margin: 2rem auto;
   width: 100%;
+}
+
+
+
+
+.character-select-container {
+  position: relative; /* needed? */
+  z-index: auto; /* or remove z-index */
 }
