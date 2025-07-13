@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================================
   const descriptions = {
     "adult": "Adult content includes mature themes and complex storylines intended for ages 18 and up.",
-    "young-adult": "Young Adult content features themes suitable for teens, ages 13-17, including coming-of-age stories.",
+    "young-adult": "Young Adult content explores teen-friendly themes, like coming-of-age, for ages 13–17.",
     "children": "Children's content is designed to be safe, fun, and age-appropriate for those under 13."
   };
 
@@ -45,21 +45,34 @@ document.addEventListener("DOMContentLoaded", () => {
     return age;
   }
 
+  // ================================
+  // Check age and toggle UI states
+  // ================================
   function checkAgeAndToggle() {
     const nameValue = nameInput.value.trim();
     const birthdayValue = birthdayInput.value;
 
     if (!nameValue || !isValidDate(birthdayValue)) {
       restrictions.style.display = 'none';
+      // Remove expanded classes if invalid
+      const container = document.querySelector('.login-container') || document.querySelector('.welcome-container');
+      if (container) container.classList.remove('expanded');
+      continueBtn.classList.remove('expanded');
       return false;
     }
 
     userAge = calculateAge(birthdayValue);
 
+    const container = document.querySelector('.login-container') || document.querySelector('.welcome-container');
+
     if (userAge >= 13) {
       restrictions.style.display = 'block';
+      if (container) container.classList.add('expanded');
+      continueBtn.classList.add('expanded');
     } else {
       restrictions.style.display = 'none';
+      if (container) container.classList.remove('expanded');
+      continueBtn.classList.remove('expanded');
     }
 
     return true;
@@ -100,21 +113,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthday = birthdayInput.value;
     let hasError = false;
 
-   // Clear name error on input if fixed
-  nameInput.addEventListener('input', () => {
-    if (nameInput.value.trim()) {
-      nameInput.classList.remove('input-error');
-      document.getElementById('name-error').style.display = 'none';
-    }
-  });
+    // Clear name error on input if fixed
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim()) {
+        nameInput.classList.remove('input-error');
+        document.getElementById('name-error').style.display = 'none';
+      }
+    });
 
-  // Clear birthday error on input if fixed
-  birthdayInput.addEventListener('input', () => {
-    if (birthdayInput.value) {
-      birthdayInput.classList.remove('input-error');
-      document.getElementById('birthday-error').style.display = 'none';
-    }
-  });
+    // Clear birthday error on input if fixed
+    birthdayInput.addEventListener('input', () => {
+      if (birthdayInput.value) {
+        birthdayInput.classList.remove('input-error');
+        document.getElementById('birthday-error').style.display = 'none';
+      }
+    });
 
     // Validate name
     if (!name) {
@@ -153,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Proceed to next page
-    window.location.href = "Playground/recommendations/bookPicker.html";
+    window.location.href = "character.html";
   });
 });
 

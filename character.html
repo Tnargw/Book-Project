@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Your Character</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choose Your Character</title>
-  <link rel="stylesheet" href="src/css/partials/character.css" />
-  <link rel="stylesheet" href="src/css/style.css" />
-  <script type="module" src="src/js/character.js" defer></script>
-</head>
+    <link rel="stylesheet" href="src/css/partials/character.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/partials/mobile.css" />
+    <link rel="stylesheet" href="src/css/partials/character-mobile.css" />
 
-<body>
-  <canvas id="backgroundCanvas"></canvas>
+    <script type="module" src="src/js/character.js" defer></script>
+    <!-- <script src="src/js/background.js" defer></script> -->
 
-  <header id="main-header">
-    <div class="logo">STORYIUM</div>
-    <nav class="nav-links">
-      <a href="login.html">HOME</a>
-      <a href="#">ABOUT</a>
-      <a href="library.html">LIBRARY</a>
-    </nav>
-    <button class="sketchpad-btn">SKETCHPAD</button>
-  </header>
+    
+  </head>
+  <body>
+    <canvas id="backgroundCanvas"></canvas>
 
-  <main class="character-select-container">
+    <header id="main-header">
+      <div class="logo">STORYIUM</div>
 
-    <!-- LEFT: Premade Characters -->
-    <section class="premade-characters">
-      <h2>Pick a Character</h2>
-      <div class="character-grid">
-        <!-- Repeat this block for each character -->
-        <div class="character-option" data-character="Tolstory">
-          <img src="imgs/tolstory.png" alt="Tolstory">
-          <span class="character-name">Tolstory</span>
+      <!-- Hamburger Menu Icon (visible on mobile only) -->
+      <button class="hamburger" aria-label="Toggle Menu">☰</button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="login.html">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="#">LIBRARY</a>
+      </nav>
+
+      <!-- Sketchpad Button -->
+      <button class="sketchpad-btn">SKETCHPAD</button>
+    </header>
+
+    <main class="character-select-container">
+      <!-- LEFT: Premade Characters -->
+      <section class="premade-characters">
+        <h2>Pick a Character</h2>
+        <div class="character-grid">
+          <!-- Repeat this block for each character -->
+          <div class="character-option" data-character="Tolstory">
+            <img src="imgs/tolstory.png" alt="Tolstory" />
+            <span class="character-name">Tolstory</span>
+          </div>
+
+          <div class="character-option" data-character="Mr.Darly">
+            <img src="imgs/mr.darly.png" alt="Mr.Darly" />
+            <span class="character-name">Mr. Darly</span>
+          </div>
+
+          <div class="character-option" data-character="Gandhuf">
+            <img src="imgs/gandhuf.png" alt="Gandhuf" />
+            <span class="character-name">Gandhuf</span>
+          </div>
+
+          <div class="character-option" data-character="Screamy">
+            <img src="imgs/screamy.png" alt="Screamy" />
+            <span class="character-name">Screamy</span>
+          </div>
+
+          <div class="character-option" data-character="NancyDraws">
+            <img src="imgs/nancy-draws.png" alt="Nancy Draws" />
+            <span class="character-name">Nancy Draws</span>
+          </div>
+
+          <div class="character-option" data-character="Page">
+            <img src="imgs/page.png" alt="Page" />
+            <span class="character-name">Page</span>
+          </div>
         </div>
+        <!-- <button id="returningBtn">Returning Adventurer</button> -->
+      </section>
 
-        <div class="character-option" data-character="Mr.Darly">
-          <img src="imgs/mr.darly.png" alt="Mr.Darly">
-          <span class="character-name">Mr. Darly</span>
-        </div>
+      <!-- RIGHT: Custom Character Drawing -->
+      <section class="custom-character">
+        <h2>Or Draw Your Own</h2>
+        <canvas class="rainbow-pixel-canvas" width="450" height="450"></canvas>
+        <label for="customName">Character Name:</label>
+        <input type="text" id="customName" placeholder="Enter a name..." />
+        <button id="clearBtn">Clear</button>
+      </section>
+    </main>
 
-        <div class="character-option" data-character="Gandhuf">
-          <img src="imgs/gandhuf.png" alt="Gandhuf">
-          <span class="character-name">Gandhuf</span>
-        </div>
+    <!-- BOTTOM: Continue Button -->
+    <div class="toggle-switch">
+      <button id="premadeBtn" class="toggle-option active">PRE-MADE</button>
+      <button id="customBtn" class="toggle-option">DRAW IT</button>
+    </div>
 
-        <div class="character-option" data-character="Screamy">
-          <img src="imgs/screamy.png" alt="Screamy">
-          <span class="character-name">Screamy</span>
-        </div>
+    <div class="continue-button-wrapper">
+      <button id="continueBtn">CONTINUE</button>
+    </div>
 
-        <div class="character-option" data-character="NancyDraws">
-          <img src="imgs/nancy-draws.png" alt="Nancy Draws">
-          <span class="character-name">Nancy Draws</span>
-        </div>
+    <footer>
+      <button>Help</button>
+      <button>Contact</button>
+      <button>Media</button>
+    </footer>
 
-        <div class="character-option" data-character="Page">
-          <img src="imgs/page.png" alt="Page">
-          <span class="character-name">Page</span>
-        </div>
-      </div>
-      <!-- <button id="returningBtn">Returning Adventurer</button> -->
-    </section>
-
-    <!-- RIGHT: Custom Character Drawing -->
-    <section class="custom-character">
-
-      <h2>Or Draw Your Own</h2>
-      <canvas class="rainbow-pixel-canvas" width="450" height="450"></canvas>
-      <label for="customName">Character Name:</label>
-      <input type="text" id="customName" placeholder="Enter a name..." />
-      <button id="clearBtn">Clear</button>
-
-    </section>
-
-  </main>
-
-  <!-- BOTTOM: Continue Button -->
-  <div class="toggle-switch">
-    <button id="premadeBtn" class="toggle-option active">PRE-MADE</button>
-    <button id="customBtn" class="toggle-option">DRAW IT</button>
-  </div>
-
-
-  <div class="continue-button-wrapper">
-    <button id="continueBtn">CONTINUE</button>
-  </div>
-
-
-  <footer>
-    <button>Help</button>
-    <button>Contact</button>
-    <button>Media</button>
-  </footer>
-</body>
-
+    
+    
+  </body>
 </html>

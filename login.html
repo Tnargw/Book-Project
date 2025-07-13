@@ -7,23 +7,32 @@
   <title>Login - YourSiteName</title>
   <link rel="stylesheet" href="src/css/style.css" />
   <script src="src/js/background.js" defer></script>
+
 </head>
 
 <body>
   <canvas id="backgroundCanvas"></canvas>
 
-  <header id="main-header">
-    <div class="logo">STORYIUM</div>
-    <nav class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="#">ABOUT</a>
-      <a href="library.html">LIBRARY</a>
-    </nav>
-    <button class="sketchpad-btn">SKETCHPAD</button>
-  </header>
+<header id="main-header">
+  <div class="logo">STORYIUM</div>
 
+  <!-- Hamburger Menu Icon (visible on mobile only) -->
+  <button class="hamburger" aria-label="Toggle Menu">☰</button>
 
+  <!-- Navigation Links -->
+  <nav class="nav-links">
+    <a href="login.html">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">LIBRARY</a>
+  </nav>
 
+  <!-- Sketchpad Button -->
+  <button class="sketchpad-btn">SKETCHPAD</button>
+</header>
+
+  
+  
+  
 
   <main class="login-container">
     <section class="login">
@@ -35,8 +44,12 @@
         <a href="newadvent.html">
           <button type="button">NEW ADVENTURER</button>
         </a>
-        <button>RETURNING ADVENTURER</button>
+        
+        <a href="Playground/recommendations/bookshelf.html">
+          <button type="button">RETURNING ADVENTURER</button>
+        </a>
       </div>
+      
     </section>
 
   </main>

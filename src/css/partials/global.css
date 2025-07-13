@@ -80,3 +80,13 @@ body {
 
  
   
+  /* Hamburger hidden on desktop */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--color2);
+  cursor: pointer;
+  z-index: 1001;
+}

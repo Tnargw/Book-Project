@@ -1,0 +1,276 @@
+/* Character CSS */
+@media (max-width: 768px) {
+
+    .character-select-container {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+    }
+  
+    .premade-characters,
+    .custom-character {
+      width: 100%;
+      padding: 1rem 0;
+    }
+  
+    .premade-characters h2,
+    .custom-character h2 {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  
+    .character-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .character-option img {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .rainbow-pixel-canvas {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+    }
+  
+    input#customName {
+      width: 90%;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+  
+    #clearBtn {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  
+   
+  
+    .toggle-option {
+      flex: 1;
+      padding: 0.6em 1em;
+      font-size: 0.95rem;
+    }
+  
+  
+    #continueBtn {
+      font-size: 1rem;
+      padding: 0.6rem 1.5rem;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+      }
+      
+      .character-select-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .toggle-switch {
+        top: auto;
+        bottom: 16%;
+        flex-direction: row;
+        width: 90%;
+      }
+
+      .continue-button-wrapper {
+        bottom: 11%;
+      }
+
+      .character-select-container {
+        min-height: 100vh;
+        padding-bottom: 11rem; /* enough room for button */
+      }
+      
+
+      :root {
+        --color1: #ffffff;
+        --color2: #000000;
+        --color3: #868686;
+        --color4: #c8c8c8;
+        --color5: #ffffff00;
+      }
+  
+      /* === HEADER BASE STYLES === */
+      @media (max-width: 768px) {
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+          position: sticky;
+          top: 0;
+          background-color: var(--color1);
+          color: var(--color2);
+          transition: background-color 0.3s ease, color 0.3s ease;
+          z-index: 2000;
+          user-select: none;
+          flex-wrap: wrap;
+        }
+  
+        .logo {
+          font-weight: bold;
+          font-size: 1.5rem;
+          transition: transform 0.3s ease;
+          cursor: pointer;
+        }
+  
+        /* === NAVIGATION === */
+        .nav-links {
+          font-size: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background-color: var(--color1);
+          color: var(--color2);
+          padding-top: 4rem;
+          transition: right 0.3s ease;
+          z-index: 3000;
+        }
+  
+        .nav-links.open {
+          right: 0;
+        }
+  
+        .nav-links a,
+        .nav-links button {
+          color: var(--color2);
+          font-size: 1.3rem;
+          text-decoration: none;
+          transition: transform 0.7s ease;
+          transform-origin: center;
+        }
+  
+        .nav-links a:hover {
+          transform: scale(1.2);
+        }
+  
+        /* === SKETCHPAD BUTTON === */
+        .sketchpad-btn {
+          border: none;
+          background-color: var(--color2);
+          font-size: 0.8rem;
+          padding: 0.5rem 0.7rem;
+          color: var(--color1);
+          letter-spacing: 0.15rem;
+          border-radius: 999px;
+          cursor: pointer;
+          display: none; /* hide on mobile, adjust if needed */
+        }
+  
+        /* === HAMBURGER MENU BUTTON === */
+        .hamburger {
+          display: block;
+          font-size: 1.8rem;
+          background: none;
+          border: none;
+          color: var(--color2);
+          cursor: pointer;
+          position: relative;
+          z-index: 20001;
+        }
+  
+        /* === BACKGROUND CANVAS === */
+        #backgroundCanvas {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
+      }
+  
+      /* === Desktop nav fallback === */
+      @media (min-width: 769px) {
+        .nav-links {
+          display: flex !important;
+          position: static !important;
+          height: auto !important;
+          flex-direction: row !important;
+          gap: 1.5rem;
+          background: none !important;
+          color: inherit !important;
+          padding: 0 !important;
+          width: auto !important;
+        }
+  
+        .hamburger {
+          display: none;
+        }
+  
+        .sketchpad-btn {
+          display: inline-block;
+        }
+      }
+
+      .nav-links {
+        z-index: 30000 !important; /* way higher than hamburger */
+      }
+      
+      .hamburger {
+        z-index: 30001;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;     /* start fully off-screen to the right */
+        width: 70%;       /* width of slide-out */
+        height: 30vh;    /* full viewport height */
+        background-color: var(--color1);
+        color: var(--color2);
+        padding-top: 4rem;
+        transition: right 0.3s ease;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 10rem;
+      }
+      
+      .nav-links.open {
+        right: 0;         /* slide fully in */
+      }
+      
+  }
+
+
+  @media (min-width: 390px) and (max-width: 768px) {
+
+    .toggle-switch {
+        top: auto;
+        bottom: 16%;
+        flex-direction: row;
+        width: 90%;
+      }
+
+      .continue-button-wrapper {
+        bottom: 11%;
+      }
+
+      .character-select-container {
+        min-height: 100vh;
+        padding-bottom: 14rem; /* enough room for button */
+      }
+
+      
+  }
+
+ 
+  
