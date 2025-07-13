@@ -1,4 +1,4 @@
-(async function() {
+(async function () {
   const stored = localStorage.getItem('selectedBooks');
   if (!stored) {
     document.getElementById('recommendations').innerText = 'No books selected.';
@@ -164,6 +164,10 @@
 
       booksDiv.appendChild(card);
     }
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = '/Playground/recommendations/bookPicker.html';
+    });
 
     continueBtn.addEventListener('click', () => {
       window.location.href = '/character.html';

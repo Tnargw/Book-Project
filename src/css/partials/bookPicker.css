@@ -94,12 +94,14 @@ html, body {
     max-width: 200px;           /* optional: max width */
     text-align: center;
   }
-  #continueBtn-container {
-    display: flex;
-    justify-content: center; /* centers horizontally */
-    margin-top: 30px;
-    margin-bottom: 50px;
-  }
+#navBtn-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
   
   
   #searchContainer {

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Adventurer - STORYIUM</title>
   <link rel="stylesheet" href="src/css/style.css" />
   <script src="src/js/background.js" defer></script>
   <script src="src/js/agecheck.js" defer></script>
 </head>
+
 <body>
   <canvas id="backgroundCanvas"></canvas>
 
@@ -18,7 +20,7 @@
     <nav class="nav-links">
       <a href="login.html">HOME</a>
       <a href="#">ABOUT</a>
-      <a href="#">LIBRARY</a>
+      <a href="library.html">LIBRARY</a>
     </nav>
     <button class="sketchpad-btn">SKETCHPAD</button>
   </header>
@@ -32,32 +34,32 @@
           <input type="text" id="name" name="name" autocomplete="off" placeholder="Enter your full name" required />
           <div id="name-error" class="error-message" style="display:none;"></div>
         </div>
-        
+
         <div class="form-group">
           <label for="birthday">Your Birthday:</label>
           <input type="date" id="birthday" name="birthday" required />
           <div id="birthday-error" class="error-message" style="display:none;"></div>
         </div>
-        
-        
+
+
 
         <div class="restrictions" id="restrictions-section" style="display:none;">
           <h3>Choose Content Restrictions</h3>
           <div class="slider-toggle" id="content-toggle">
             <input type="radio" name="content" id="adult" value="adult">
             <label for="adult">Adult</label>
-            
+
             <input type="radio" name="content" id="young-adult" value="young-adult" checked>
             <label for="young-adult">Young Adult</label>
-            
+
             <input type="radio" name="content" id="children" value="children">
             <label for="children">Children</label>
-            
+
             <div class="slider"></div>
           </div>
 
-          <div id="restriction-description" class="description-box" ></div>
-          
+          <div id="restriction-description" class="description-box"></div>
+
         </div>
 
         <button type="button" id="continue-btn">CONTINUE</button>
@@ -72,4 +74,5 @@
   </footer>
 
 </body>
+
 </html>
