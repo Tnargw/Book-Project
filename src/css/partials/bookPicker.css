@@ -145,7 +145,7 @@ html, body {
   }
   
   .book-title {
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity 0.3s;
     margin-top: 8px;
     font-weight: bold;
@@ -162,7 +162,82 @@ html, body {
   }
   
   .selected {
-    border: 3px solid #4CAF50;
-    box-shadow: 0 0 15px rgba(0,128,0,0.5);
+    border-radius: 8px;
+  transform: scale(1.05);
+  animation: pastelGlow 2.5s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes pastelGlow {
+  0%   { box-shadow: 0 0 12px 3px #f39aa8; }   /* pastel pink */
+  20%  { box-shadow: 0 0 12px 3px #f5cf76; }   /* pastel yellow */
+  40%  { box-shadow: 0 0 12px 3px #75e8ac; }   /* pastel mint */
+  60%  { box-shadow: 0 0 12px 3px #9bcbff; }   /* pastel blue */
+  80%  { box-shadow: 0 0 12px 3px #d1a5ff; }   /* pastel lavender */
+  100% { box-shadow: 0 0 12px 3px #ffa0ae; }   /* pink again */
+}
+  
+
+
+  /* === Responsive Design for Mobile === */
+  @media (max-width: 768px) {
+
+    #books {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1%; /* Optional: minor spacing without breaking width */
+      padding: 0 0.5rem;
+    }
+  
+    .book-card {
+      box-sizing: border-box;
+      flex: 0 0 48%; /* ✅ Two per row with spacing */
+      margin: 0 0 1rem 0;
+      padding: 0.5rem;
+      max-width: 48%; /* optional safety */
+    }
+  
+    @media (max-width: 480px) {
+      .book-card {
+        flex: 0 0 100%; /* Stack on smallest screens */
+        max-width: 100%;
+      }
+    }
+  
+    .book-card img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .book-title {
+      font-size: 0.85rem;
+      color: black;
+    }
+  
+    #searchContainer {
+      bottom: 6.5rem;
+      width: 100%;
+      left: 0;
+      transform: none;
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem;
+    }
+  
+    #searchButton {
+      width: 100%;
+      max-width: 300px;
+      font-size: 1rem;
+    }
+
+    .book-card {
+      flex: 0 0 31%;
+      max-width: 31%;
+      margin-bottom: 1rem;
+    }
+    
   }
+  
   

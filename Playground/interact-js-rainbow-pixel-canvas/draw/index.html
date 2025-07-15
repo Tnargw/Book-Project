@@ -1,24 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>interact.js rainbow pixel canvas</title>
+  <title>Interactive Rainbow Pixel Canvas</title>
+  <link rel="stylesheet" href="/src/css/style.css">
   <link rel="stylesheet" href="./style.css">
+
+
 </head>
 <body>
 
-  <canvas class="rainbow-pixel-canvas"></canvas>
+  <header id="main-header">
+    <div class="logo">STORYIUM</div>
+  
+    <!-- Hamburger Menu Icon (visible on mobile only) -->
+    <button class="hamburger" aria-label="Toggle Menu">☰</button>
+  
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="/login.html">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LIBRARY</a>
+    </nav>
+  
+    <!-- Sketchpad Button -->
+    <a href="" class="sketchpad-btn">SKETCHPAD</a>
+  </header>
 
-  <br>
-  <button id="clearBtn">Clear Canvas</button>
-  <button id="saveBtn">Save Drawing</button>
-  <button id="loadBtn">Load Drawing</button>
-  <br>
-  
-  <!-- Secondary canvas to preview and animate saved drawing -->
-  <canvas id="previewCanvas" width="200" height="200" style="border:1px solid #000;"></canvas>
-  
+<div class="instructions">
+  <strong>How to Use:</strong><br>
+  1. Draw on the canvas below.<br>
+  2. Enter a name and click <strong>Save Drawing</strong>.<br>
+  3. Your drawing will appear in the library below.<br>
+  4. <strong>Double-click</strong> any drawing in the library to load it back to the canvas.<br>
+  5. <strong>Hold <kbd>Shift</kbd> to lock a color while dragging. Long press on touch to lock color.</strong>
+</div>
+
+<canvas class="rainbow-pixel-canvas"></canvas>
+<br>
+
+<input type="text" id="drawingTitle" placeholder="Enter drawing name" />
+<div class="button-column">
+  <button id="clearBtn">Clear</button>
+  <button id="saveBtn">Save</button>
+</div>
+
+
+<!-- Scrollable drawing library -->
+<div class="library" id="library"></div>
+
 <script src="./script.js"></script>
+
+<footer>
+  <button>Help</button>
+  <button>Contact</button>
+  <button>Media</button>
+</footer>
 
 </body>
 </html>

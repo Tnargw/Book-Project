@@ -1,6 +1,99 @@
+:root {
+  --color1: #ffffff;
+  --color2: #000000;
+  --color3: #868686;
+  --color4: #c8c8c8;
+  --color5: #ffffff30;
+}
+
+
+@keyframes rainbowFlash {
+  0%   { color: #f39aa8; }  /* pastel pink */
+  20%  { color: #f5cf76; }  /* pastel yellow */
+  40%  { color: #75e8ac; }  /* pastel mint */
+  60%  { color: #9bcbff; }  /* pastel blue */
+  80%  { color: #d1a5ff; }  /* pastel lavender */
+  100% { color: #ffa0ae; }  /* back to pink */
+}
+
 .rainbow-pixel-canvas {
-  border: solid 2px gray;
+  border: solid 1.5px black;
 
   -ms-touch-action: none;
       touch-action: none;
 }
+
+
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+.library {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 20px;
+  gap: 10px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  max-width: 100%;
+}
+.library-item {
+  flex: 0 0 auto;
+  border: 2px solid #999;
+  padding: 5px;
+  cursor: pointer;
+}
+.library-item canvas {
+  display: block;
+  border: 1px solid #000;
+}
+.instructions {
+  margin: 0 auto 20px auto;   /* center the block */
+  padding: 10px;
+  max-width: 600px;           /* optional: limits width for readability */
+  text-align: left;           /* aligns the text to the left */
+  color: #343434;                /* makes the text grey */
+  background: none;           /* removes background color */
+  border: none;               /* optional: remove border too */
+}
+
+
+/* Container to align buttons in a column */
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Match shared button style */
+.button-column button {
+  border: var(--color5);
+  background-color: var(--color2);
+  font-size: 0.8rem;
+  padding: 0.6rem 1rem;
+  color: var(--color1);
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: 0.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.button-column button:hover {
+  border: 1px solid var(--color2);
+  background-color: var(--color5);
+  color: var(--color2);
+}
+
+
+.instructions strong,
+.instructions b {
+  animation: rainbowFlash 20s linear infinite;
+  font-weight: bold;
+}
+
+
+
