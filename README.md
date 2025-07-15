@@ -32,3 +32,7 @@ Story/Sprites:
     - Animated Sumararies: https://codepen.io/cobra_winfrey/pen/jjjero
     - Pixel Canvas(**** Draw your character!): https://codepen.io/taye/pen/jOgKWv
     
+
+TODO:
+ - Recommendations back button
+ - About page?
