@@ -91,6 +91,11 @@
     const container = document.getElementById('recommendations');
     container.innerHTML = '<h3>Fetching recommendations...</h3>';
 
+        document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = '/Playground/recommendations/bookPicker.html';
+    });
+
+
     const recResults = new Map();
     const queries = tags.slice(0, 8);
 
@@ -165,9 +170,6 @@
       booksDiv.appendChild(card);
     }
 
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = '/Playground/recommendations/bookPicker.html';
-    });
 
     continueBtn.addEventListener('click', () => {
       window.location.href = '../recommendations/bookshelf.html';
