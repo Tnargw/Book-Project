@@ -5,8 +5,8 @@ header {
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  background-color: #ffffff00;
-  color: var(--color2);
+  background-color: var(--color5);
+  color: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   z-index: 1000;
   user-select: none;
@@ -14,8 +14,8 @@ header {
 
 /* Header color change on scroll */
 header.scrolled {
-  background-color: var(--color2);
-  color: var(--color1);
+  background-color: var(--color5);
+  color: var(--color2);
 }
 
 /* Logo styling and animation */

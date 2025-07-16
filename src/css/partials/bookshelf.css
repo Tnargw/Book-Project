@@ -10,8 +10,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--color-bg, #f4f4f4);
-  color: var(--color-text, #333);
+  background-color: var(--color1);
+  color: var(--color2);
 }
 
 .container {
