@@ -61,9 +61,30 @@ if (!bookId) {
       const progressBarContainer = document.querySelector('.progress-bar');
       const fill = document.getElementById('progressFill');
 
+      
       function animateProgressBarFill(targetPercent, duration = 3000) {
+        fill.classList.add('rainbow-flash'); // start the flashing animation
+      
         const startWidth = parseFloat(fill.style.width) || 0;
         const startTime = performance.now();
+      
+
+        const rainbowStyle = document.createElement('style');
+rainbowStyle.textContent = `
+@keyframes rainbowFlash {
+  0%   { background-color: #f39aa8; }
+  20%  { background-color: #f5cf76; }
+  40%  { background-color: #75e8ac; }
+  60%  { background-color: #9bcbff; }
+  80%  { background-color: #d1a5ff; }
+  100% { background-color: #ffa0ae; }
+}
+.rainbow-flash {
+  animation: rainbowFlash 2s linear infinite;
+}
+`;
+document.head.appendChild(rainbowStyle);
+
 
         function animate(time) {
           const elapsed = time - startTime;
@@ -71,22 +92,24 @@ if (!bookId) {
           const easedProgress = 1 - Math.pow(1 - progress, 3);
           const currentWidth = startWidth + (targetPercent * 100 - startWidth) * easedProgress;
           fill.style.width = `${currentWidth}%`;
-
+      
           const containerWidth = progressBarContainer.offsetWidth;
           const characterWidth = progressCharacter.offsetWidth || 40;
           let leftPos = (currentWidth / 100) * containerWidth - characterWidth / 2;
           leftPos = Math.min(Math.max(leftPos, 0), containerWidth - characterWidth);
           progressCharacter.style.left = `${leftPos}px`;
-
+      
           if (progress < 1) {
             progressCharacter.style.animation = 'wobbleWalk 0.4s infinite';
             requestAnimationFrame(animate);
           } else {
+            fill.classList.remove('rainbow-flash');  // stop flashing when done
             progressCharacter.style.animation = 'bounceIdle 1.5s infinite ease-in-out';
           }
         }
         requestAnimationFrame(animate);
       }
+      
 
       function updateProgress() {
         let pagesRead = parseInt(localStorage.getItem(pagesReadKey)) || 0;
@@ -208,3 +231,4 @@ styleEl.textContent = `
 }
 `;
 document.head.appendChild(styleEl);
+

@@ -135,7 +135,7 @@
       return;
     }
 
-    container.innerHTML = '<h3>Recommended Books:</h3>';
+    container.innerHTML = '';
     const booksDiv = document.createElement('div');
     booksDiv.id = 'books';
 
@@ -180,3 +180,4 @@
   }
 
 })();
+

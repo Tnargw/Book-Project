@@ -10,8 +10,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--color-bg, #f4f4f4);
-  color: var(--color-text, #333);
+  background-color: var(--color1);
+  color: var(--color2);
 }
 
 .container {
@@ -21,6 +21,8 @@ body {
 
 }
 
+
+
 aside#sidebarStats {
   width: 33%;
   background-color: var(--color1, #ffffff);
@@ -29,6 +31,7 @@ aside#sidebarStats {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 3rem;
 }
 
 .character-image img {
@@ -108,8 +111,8 @@ main#mainContent {
 }
 
 .character-display img {
-  width: 120px;
-  height: 120px;
+  width: 220px;
+  height: auto;
   object-fit: contain; /* Keeps image aspect ratio */
   border: 2px solid #ccc;
   border-radius: 8px;
@@ -124,6 +127,13 @@ main#mainContent {
 }
 
 
+.divider {
+  width: 1px;
+  background-color: var(--color3); /* Thin gray line */
+  height: 70%;                     /* Not full height */
+  align-self: center;              /* Vertically center in flex container */
+  margin: 0 2rem;                  /* Horizontal space around the line */
+}
 
 /* progress bar character */
 
@@ -216,6 +226,54 @@ main#mainContent {
   pointer-events: none;
   animation: bounceIdle 1.5s infinite ease-in-out;
   z-index: 10;
+}
+
+
+
+#pageInput {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: flex-start; /* align to the left */
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Input styling */
+#pageInput input[type="number"] {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1rem;
+  background-color: var(--color5);
+  border-radius: 999px;
+  border: 2px solid var(--color2);
+  color: var(--color2);
+  text-align: center;
+}
+
+/* Placeholder styling */
+#pageInput input[type="number"]::placeholder {
+  color: var(--color3);
+  opacity: 1;
+}
+
+/* Button styling */
+#addPagesBtn, button {
+  border: var(--color5);
+  background-color: var(--color2);
+  font-size: .8rem;
+  padding: .6rem 1rem;
+  color: var(--color1);
+  transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease;
+  letter-spacing: .15rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#addPagesBtn:hover, button:hover {
+  border: 1px solid var(--color2);
+  background-color: var(--color5);
+  color: var(--color2);
 }
 
 
