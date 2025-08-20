@@ -17,13 +17,13 @@ Stories shape us. STORYIUM turns reading into an interactive, creative journey.
 
 
 
-
-
-
-# Book-Project
-
 website link: https://storyium.netlify.app
 Drawing link: https://storyium.netlify.app/playground/interact-js-rainbow-pixel-canvas/draw/
+
+
+
+# Inspiration/References 
+
 
 CodePen Reference:
 overall Design:
