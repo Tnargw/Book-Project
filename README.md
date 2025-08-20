@@ -1,3 +1,25 @@
+# About STORYIUM
+Created by Tabor Vavra and Grant Watson
+
+## What is STORYIUM?
+STORYIUM is a unique platform that combines your love for reading with your creativity. Whether you're looking to discover your next favorite book or express yourself through doodling, STORYIUM has you covered.
+
+## Features
+Doodle freely and draw your own characters inspired by your reading.
+Keep track of the books you've read and the pages you've turned.
+Discover new books tailored to your preferred genres.
+Your reading habits influence your character’s stats, making the experience immersive and personal.
+Try Drawing!
+Click and drag on this page to draw on the background. Color changes with the direction you move. Hold Shift to lock in a color.
+
+## Our Vision
+Stories shape us. STORYIUM turns reading into an interactive, creative journey.
+
+
+
+
+
+
 # Book-Project
 
 website link: https://storyium.netlify.app
@@ -31,8 +53,3 @@ Story/Sprites:
     - Pixel progress bar: https://codepen.io/achudars/pen/DWROKx
     - Animated Sumararies: https://codepen.io/cobra_winfrey/pen/jjjero
     - Pixel Canvas(**** Draw your character!): https://codepen.io/taye/pen/jOgKWv
-    
-
-TODO:
- - Recommendations back button
- - About page?
